@@ -60,7 +60,7 @@ st.header("BI Report (Structure): " + role.replace('Manager',''))
 st.dataframe(df.head())
 
 with st.form("my_form"):
-
+	cols = []
 	query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 	cols_2_pass = openai_response(f"""Please only give output as follows, with the names of each expected column separated by commas without space such as column1,column2,column3
                                  A dataframe with following column names : {df.columns}. 
@@ -68,8 +68,10 @@ with st.form("my_form"):
    # Every form must have a submit button.
 	submitted = st.form_submit_button("Submit")
 	if submitted:
-		st.write(cols_2_pass)
-		st.dataframe(df[cols_2_pass].head())
+		for item in col_2_pass:
+			cols.append(item.strip())
+		st.write(cols)
+		st.dataframe(df[cols].head())
 #		if contains_substring(query.lower(),ls): 
 #			fig, x = plt.subplots()
 #			response = pandas_ai(df, prompt=query)
