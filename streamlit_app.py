@@ -68,7 +68,7 @@ with st.form("my_form"):
    # Every form must have a submit button.
 	submitted = st.form_submit_button("Submit")
 	if submitted:
-		for item in col_2_pass:
+		for item in cols_2_pass:
 			cols.append(item.strip())
 		st.write(cols)
 		st.dataframe(df[cols].head())
