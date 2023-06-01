@@ -69,6 +69,7 @@ with st.form("my_form"):
 	submitted = st.form_submit_button("Submit")
 	if submitted:
 		st.write(cols_2_pass)
+		st.dataframe(df[cols_2_pass].head())
 #		if contains_substring(query.lower(),ls): 
 #			fig, x = plt.subplots()
 #			response = pandas_ai(df, prompt=query)
