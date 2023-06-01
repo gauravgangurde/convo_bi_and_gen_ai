@@ -22,61 +22,59 @@ df3 = pd.read_csv('claims_data.csv')
 ls = ['chart','plot','graph','trend']
 #to check if prompt have chart, graph words
 def contains_substring(string, substrings):
-    for substring in substrings:
-        if substring in string:
-            return True
-    return False
+	for substring in substrings:
+		if substring in string:
+			return True
+	return False
 
 #query to open AI
 def openai_response(query):
-   response = openai.ChatCompletion.create(
-   model="gpt-3.5-turbo",
+	response = openai.ChatCompletion.create(
+	model="gpt-3.5-turbo",
 
-   messages = [
-       {"role":"system", "content":"You are helpful assistant."},
-       {"role":"user","content": query}
-   ]
+	messages = [
+		{"role":"system", "content":"You are helpful assistant."},
+		{"role":"user","content": query}
+	]
    )
-   return response.choices[0]['message']['content']
+	return response.choices[0]['message']['content']
     
 with st.sidebar:
-    st.image(image, width = 150)
-    st.header('Conversational BI')
-    st.write('Ask any question on your BI report')
-    st.write(' ')
-    st.write(' ')
-    role = st.selectbox('Please select your role',('HR Manager', 'Sales Manager', 'Claims Manager'))
+	st.image(image, width = 150)
+	st.header('Conversational BI')
+	st.write('Ask any question on your BI report')
+	st.write(' ')
+	st.write(' ')
+	role = st.selectbox('Please select your role',('HR Manager', 'Sales Manager', 'Claims Manager'))
 
 
 #based on role selected show BI report  
-if   role == 'HR Manager':
-    df = df1
+if role == 'HR Manager':
+	df = df1
 elif role == 'Sales Manager':
-    df = df2
+	df = df2
 elif role == 'Claims Manager':
-    df = df3
+	df = df3
 
 st.header("BI Report (Structure): " + role.replace('Manager',''))
 st.dataframe(df.head())
 
 with st.form("my_form"):
 
-   query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
-   cols_2_pass = openai_response(f"""Please only output in Python list style, with the names of each expected column separated by commas, such as 'column1', 'column2','column3'
+	query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
+	cols_2_pass = openai_response(f"""Please only output in Python list style, with the names of each expected column separated by commas, such as 'column1', 'column2','column3'
                                  A dataframe with following column names : {df.columns}. 
                                  Find all column names which will be used in following query: {query}""")
    # Every form must have a submit button.
-   submitted = st.form_submit_button("Submit")
-   if submitted:
-       st.write(cols_2_pass)
- #      if contains_substring(query.lower(),ls): 
- #       fig, x = plt.subplots()
- #       response = pandas_ai(df, prompt=query)
- #       st.pyplot(fig)
- #       st.text(response)
- #      else:
- #       response = pandas_ai(df, prompt=query)
- #       st.text(response)
-
-
+	submitted = st.form_submit_button("Submit")
+	if submitted:
+		st.write(cols_2_pass)
+#		if contains_substring(query.lower(),ls): 
+#			fig, x = plt.subplots()
+#			response = pandas_ai(df, prompt=query)
+#			st.pyplot(fig)
+#			st.text(response)
+#		else:
+#			response = pandas_ai(df, prompt=query)
+#			st.text(response)
 
