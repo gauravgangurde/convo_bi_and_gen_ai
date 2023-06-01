@@ -64,7 +64,7 @@ with st.form("my_form"):
    query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
    cols_2_pass = openai_response(f""" Give output only in format as each expected column name seperated by comma like column1,column2,column3,....
                                  A dataframe with following column names : {df.columns}. 
-                                 Find all column names which will be used in following query: {query}""").split(',')
+                                 Find all column names which will be used in following query: {query}""").to_string(index=False).split(',')
    # Every form must have a submit button.
    submitted = st.form_submit_button("Submit")
    if submitted:
