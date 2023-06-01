@@ -67,7 +67,7 @@ with st.form("my_form"):
    # Every form must have a submit button.
    submitted = st.form_submit_button("Submit")
    if submitted:
-       print(cols_2_pass)
+        st.write(cols_2_pass)
  #      if contains_substring(query.lower(),ls): 
  #       fig, x = plt.subplots()
  #       response = pandas_ai(df, prompt=query)
