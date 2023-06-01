@@ -5,6 +5,7 @@ from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 from PIL import Image
 import matplotlib.pyplot as plt
+import openai
 
 #st.set_option('deprecation.showPyplotGlobalUse', False)
 image = Image.open('exl.png')
@@ -25,7 +26,18 @@ def contains_substring(string, substrings):
         if substring in string:
             return True
     return False
-    
+
+#query to open AI
+def openai_response(query):
+   response = openai.ChatCompletion.create(
+   model="gpt-3.5-turbo",
+
+   messages = [
+       {"role":"system", "content":"You are helpful assistant."},
+       {"role":"user","content": query}
+   ]
+   )
+   return response.choices[0]['message']['content']
     
 with st.sidebar:
     st.image(image, width = 150)
@@ -50,17 +62,20 @@ st.dataframe(df.head())
 with st.form("my_form"):
 
    query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
+   cols_2_pass = openai_response(f""" A dataframe with following column names : {df.columns}. 
+                                 Find all column names which will be used in following query: {query} and return it in python list""")
    # Every form must have a submit button.
    submitted = st.form_submit_button("Submit")
    if submitted:
-       if contains_substring(query.lower(),ls): 
-        fig, x = plt.subplots()
-        response = pandas_ai(df, prompt=query)
-        st.pyplot(fig)
-        st.text(response)
-       else:
-        response = pandas_ai(df, prompt=query)
-        st.text(response)
+       print(cols_2_pass)
+ #      if contains_substring(query.lower(),ls): 
+ #       fig, x = plt.subplots()
+ #       response = pandas_ai(df, prompt=query)
+ #       st.pyplot(fig)
+ #       st.text(response)
+ #      else:
+ #       response = pandas_ai(df, prompt=query)
+ #       st.text(response)
 
 
 
