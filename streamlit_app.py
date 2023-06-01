@@ -71,7 +71,7 @@ with st.form("my_form"):
 		for item in cols_2_pass:
 			cols.append(item.strip())
 		st.write(cols)
-		#st.dataframe(df[cols].head())
+		st.dataframe(df[cols].head())
 		if contains_substring(query.lower(),ls): 
 			fig, x = plt.subplots()
 			response = pandas_ai(df[cols], prompt=query)
