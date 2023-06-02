@@ -85,7 +85,7 @@ with tab2:
 		
 	
 	st.header("Personalized communication ")
-	
+	response2 = ''
 	with st.form("communication"):
 		name = st.selectbox('Please select name',df["name"])
 		intent_of_mail = st.text_input(label ="Intent of mail" , placeholder = 'Intent')
@@ -104,5 +104,5 @@ with tab2:
 			st.text(f"""Category : {category}\nTarget : {target}\nLatest performance : {latest_performance}""")
 			st.write()
 			st.markdown(response2)
-	if response2:
+	if response2 != '':
 		st.download_button('Download text', response2)
