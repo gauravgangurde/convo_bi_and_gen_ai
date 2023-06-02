@@ -10,6 +10,13 @@ import openai
 #EXL logo
 image = Image.open('exl.png')
 
+with st.sidebar:
+	st.image(image, width = 150)
+	st.write('Ask any question on your BI report')
+	st.write(' ')
+	st.write(' ')
+	role = st.selectbox('Please select your role',('HR Manager', 'Sales Manager', 'Claims Manager'))
+
 tab1, tab2 = st.tabs(['Analysis','Communication'])
 
 with tab1:
@@ -31,15 +38,6 @@ with tab1:
 		return False
 		
 		
-	with st.sidebar:
-		st.image(image, width = 150)
-		st.header('Conversational BI')
-		st.write('Ask any question on your BI report')
-		st.write(' ')
-		st.write(' ')
-		role = st.selectbox('Please select your role',('HR Manager', 'Sales Manager', 'Claims Manager'))
-	
-	
 	#based on role selected show BI report  
 	if role == 'HR Manager':
 		df = df1
@@ -84,10 +82,6 @@ with tab2:
 		)
 		return response.choices[0]['message']['content']   
 		
-	with st.sidebar:
-		st.image(image, width = 150)
-		st.header('Generative AI')
-	
 	
 	st.header("Personalized communication ")
 	
