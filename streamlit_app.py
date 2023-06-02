@@ -76,8 +76,8 @@ with tab2:
 		
 	with st.form("communication"):
 		name = st.selectbox('Please select name',df["Name"])
-		category = df[df.name == name]['Category'].to_string(index=False)
-		target = df[df.name == name]['Sales target'].to_string(index=False)
+		category = df[df.Name == name]['Category'].to_string(index=False)
+		target = df[df.Name == name]['Sales target'].to_string(index=False)
 		latest_performance = df[df.Name == name]['Sales achieved'].to_string(index=False)
 		
 		# Every form must have a submit button.
