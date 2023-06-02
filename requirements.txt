@@ -86,7 +86,7 @@ setuptools
 six
 smmap
 stack-data
-streamlit
+streamlit==1.22.0
 tenacity
 tokenizers
 toml
