@@ -91,7 +91,7 @@ with tab2:
 					offer some insight based on performance and their category,
 					--- {name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance} ---
 					""")
-			st.text(f"""Category : {category}\nTarget : {target}\nLatest performance : {latest_performance}""")
+			st.text(f"""Name: {name}\nCategory : {category}\nTarget : {target}\nLatest performance : {latest_performance}""")
 			st.write()
 			st.markdown(response2)
 
