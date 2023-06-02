@@ -104,4 +104,4 @@ with tab2:
 			st.text(f"""Category : {category}\nTarget : {target}\nLatest performance : {latest_performance}""")
 			st.write()
 			st.markdown(response2)
-			st.download_button('Download text', response2)
+	st.download_button('Download text', response2)
