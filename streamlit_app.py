@@ -31,6 +31,7 @@ def contains_substring(string, substrings):
 def openai_response(query):
 	response = openai.ChatCompletion.create(
 	model="gpt-3.5-turbo",
+	temperature = 0,
 
 	messages = [
 		{"role":"system", "content":"You are helpful assistant."},
