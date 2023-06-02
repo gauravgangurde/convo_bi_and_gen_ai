@@ -85,8 +85,8 @@ with tab2:
 		return response.choices[0]['message']['content']   
 		
 	with st.sidebar:
-	st.image(image, width = 150)
-	st.header('Generative AI')
+		st.image(image, width = 150)
+		st.header('Generative AI')
 	
 	
 	st.header("Personalized communication ")
