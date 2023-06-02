@@ -9,7 +9,7 @@ import openai
 
 #EXL logo
 image = Image.open('exl.png')
-
+df = pd.read_csv('data.csv')
 with st.sidebar:
 	st.image(image, width = 150)
 	st.write('Ask any question on your BI report')
@@ -22,7 +22,6 @@ with tab1:
 	
 	pandas_ai = PandasAI(llm, conversational=False, enforce_privacy = True)
 	
-	df = pd.read_csv('performance.csv')
 	
 	ls = ['chart','plot','graph','trend']
 	#to check if prompt have chart, graph words
@@ -57,8 +56,6 @@ with tab1:
 with tab2:
 
 	openai.api_key = st.secrets["chat_gpt_key"]
-	
-	df = pd.read_csv('performance.csv')
 	
 	def openai_response(query):
 		response = openai.ChatCompletion.create(
