@@ -55,16 +55,16 @@ with tab1:
 		
 		query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 		# Every form must have a submit button.
-		submitted = st.form_submit_button("Submit")
-		if submitted:
+		submitted1 = st.form_submit_button("Submit")
+		if submitted1:
 			if contains_substring(query.lower(),ls): 
 				fig, x = plt.subplots()
-				response = pandas_ai(df, prompt=query)
+				response1 = pandas_ai(df, prompt=query)
 				st.pyplot(fig)
-				st.text(response)
+				st.text(response1)
 			else:
-				response = pandas_ai(df, prompt=query)
-				st.text(response)
+				response1 = pandas_ai(df, prompt=query)
+				st.text(response1)
 				
 
 
@@ -99,13 +99,13 @@ with tab2:
 		latest_performance = df[df.name == name]['latest_month_performance'].to_string(index=False)
 		
 		# Every form must have a submit button.
-		submitted = st.form_submit_button("Submit")
-		if submitted:
-			response = openai_response(f"""Write a {intent_of_mail} mail to a salesperson {name} as their employer based on following information starts and ends with triplle dashes marks,
+		submitted2 = st.form_submit_button("Submit")
+		if submitted2:
+			response2 = openai_response(f"""Write a {intent_of_mail} mail to a salesperson {name} as their employer based on following information starts and ends with triplle dashes marks,
 	Analyse the data to determine whether a salesperson's performance is above or below target and how it impacts the performance category,
 	offer some insight based on performance and their category,
 	--- {name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance} ---
 	""")
 		st.text(f"""Category : {category}\nTarget : {target}\nLatest performance : {latest_performance}""")
 		st.write()
-		st.markdown(response)
+		st.markdown(response2)
