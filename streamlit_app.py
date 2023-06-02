@@ -79,7 +79,6 @@ with tab2:
 		
 	with st.form("communication"):
 		name = st.selectbox('Please select name',df["name"])
-		intent_of_mail = st.text_input(label ="Intent of mail" , placeholder = 'Intent')
 		category = df[df.name == name]['performance'].to_string(index=False)
 		target = df[df.name == name]['target'].to_string(index=False)
 		latest_performance = df[df.name == name]['latest_month_performance'].to_string(index=False)
@@ -87,7 +86,7 @@ with tab2:
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Submit")
 		if submitted2:
-			response2 = openai_response(f"""Write a {intent_of_mail} mail to a salesperson {name} as their employer based on following information starts and ends with triplle dashes marks,
+			response2 = openai_response(f"""Write a feedback mail to a salesperson {name} as their employer based on following information starts and ends with triplle dashes marks,
 					Analyse the data to determine whether a salesperson's performance is above or below target and how it impacts the performance category,
 					offer some insight based on performance and their category,
 					--- {name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance} ---
