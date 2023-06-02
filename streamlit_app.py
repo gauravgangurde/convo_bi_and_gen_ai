@@ -85,7 +85,7 @@ with tab2:
 		
 	
 	st.header("Personalized communication ")
-	
+	response2 = ''
 	with st.form("communication"):
 		name = st.selectbox('Please select name',df["name"])
 		intent_of_mail = st.text_input(label ="Intent of mail" , placeholder = 'Intent')
