@@ -51,7 +51,7 @@ with tab1:
 	st.header("BI Report (Structure): " + role.replace('Manager',''))
 	st.dataframe(df.head())
 	
-	with st.form("my_form"):
+	with st.form("conversation_bi"):
 		
 		query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 		# Every form must have a submit button.
@@ -91,7 +91,7 @@ with tab2:
 	
 	st.header("Personalized communication ")
 	
-	with st.form("my_form"):
+	with st.form("communication"):
 		name = st.selectbox('Please select name',df["name"])
 		intent_of_mail = st.text_input(label ="Intent of mail" , placeholder = 'Intent')
 		category = df[df.name == name]['performance'].to_string(index=False)
