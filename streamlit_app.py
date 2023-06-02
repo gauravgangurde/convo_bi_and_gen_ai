@@ -112,3 +112,9 @@ with tab2:
 			)
 	if response2 != '':
 		st.download_button('Download text', response2)
+					st.download_button(
+			    label="Download data as CSV",
+			    data='employees.csv',
+			    file_name='large_df.csv',
+			    mime='text/csv',
+			)
