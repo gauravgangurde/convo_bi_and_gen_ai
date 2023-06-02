@@ -75,10 +75,10 @@ with tab2:
 		st.write('Communication sent')
 		
 	with st.form("communication"):
-		name = st.selectbox('Please select name',df["name"])
-		category = df[df.name == name]['performance'].to_string(index=False)
-		target = df[df.name == name]['target'].to_string(index=False)
-		latest_performance = df[df.name == name]['latest_month_performance'].to_string(index=False)
+		name = st.selectbox('Please select name',df["Name"])
+		category = df[df.name == name]['Category'].to_string(index=False)
+		target = df[df.name == name]['Sales target'].to_string(index=False)
+		latest_performance = df[df.Name == name]['Sales achieved'].to_string(index=False)
 		
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Submit")
