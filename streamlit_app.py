@@ -108,6 +108,6 @@ with tab2:
 	if response2 != '':
 		st.download_button('Download text', response2)
 
-		with open('memployees.csv', 't') as f:
+		with open('employees.csv', 'rt') as f:
 			st.download_button('Download CSV', f)
 			st.write('Download complete')
