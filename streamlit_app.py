@@ -46,7 +46,8 @@ with tab1:
 	elif role == 'Claims Manager':
 		df = df3
 	
-	st.header("BI Report (Structure): " + role.replace('Manager',''))
+	st.header("Conversational BI")
+	st.subheader("BI Report (Structure): " + role.replace('Manager',''))
 	st.dataframe(df.head())
 	
 	with st.form("conversation_bi"):
