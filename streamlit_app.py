@@ -75,7 +75,7 @@ with tab2:
 	
 	send_button = st.button("Send communication")
 	if send_button:
-		st.write('completed')
+		st.write('Communication sent')
 		
 	with st.form("communication"):
 		name = st.selectbox('Please select name',df["name"])
