@@ -70,22 +70,21 @@ with tab1:
 
 with tab2:
 
-openai.api_key = st.secrets["chat_gpt_key"]
-
-df = pd.read_csv('performance.csv')
-
-def openai_response(query):
-	response = openai.ChatCompletion.create(
-	model="gpt-3.5-turbo",
-	messages = [
-		{"role":"system", "content":"You are helpful assistant."},
-		{"role":"user","content": query}
-	]
-	)
-	return response.choices[0]['message']['content']   
-    
-with st.sidebar:
-
+	openai.api_key = st.secrets["chat_gpt_key"]
+	
+	df = pd.read_csv('performance.csv')
+	
+	def openai_response(query):
+		response = openai.ChatCompletion.create(
+		model="gpt-3.5-turbo",
+		messages = [
+			{"role":"system", "content":"You are helpful assistant."},
+			{"role":"user","content": query}
+		]
+		)
+		return response.choices[0]['message']['content']   
+		
+	with st.sidebar:
 	st.image(image, width = 150)
 	st.header('Generative AI')
 	
