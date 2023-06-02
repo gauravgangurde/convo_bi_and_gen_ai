@@ -104,12 +104,7 @@ with tab2:
 			st.text(f"""Category : {category}\nTarget : {target}\nLatest performance : {latest_performance}""")
 			st.write()
 			st.markdown(response2)
-			st.download_button(
-			    label="Download data as CSV",
-			    data='employees.csv',
-			    file_name='large_df.csv',
-			    mime='text/csv',
-			)
+
 	if response2 != '':
 		st.download_button('Download text', response2)
 
