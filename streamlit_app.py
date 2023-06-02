@@ -13,9 +13,6 @@ image = Image.open('exl.png')
 with st.sidebar:
 	st.image(image, width = 150)
 	st.write('Ask any question on your BI report')
-	st.write(' ')
-	st.write(' ')
-	role = st.selectbox('Please select your role',('HR Manager', 'Sales Manager', 'Claims Manager'))
 
 tab1, tab2 = st.tabs(['Analysis','Communication'])
 
@@ -25,9 +22,7 @@ with tab1:
 	
 	pandas_ai = PandasAI(llm, conversational=False, enforce_privacy = True)
 	
-	df1 = pd.read_csv('employees.csv')
-	df2 = pd.read_csv('sales_data.csv')
-	df3 = pd.read_csv('claims_data.csv')
+	df = pd.read_csv('performance.csv')
 	
 	ls = ['chart','plot','graph','trend']
 	#to check if prompt have chart, graph words
@@ -36,18 +31,10 @@ with tab1:
 			if substring in string:
 				return True
 		return False
-		
-		
-	#based on role selected show BI report  
-	if role == 'HR Manager':
-		df = df1
-	elif role == 'Sales Manager':
-		df = df2
-	elif role == 'Claims Manager':
-		df = df3
+
 	
 	st.header("Conversational BI")
-	st.subheader("BI Report (Structure): " + role.replace('Manager',''))
+	st.subheader("BI Report (Structure): ")
 	st.dataframe(df.head())
 	
 	with st.form("conversation_bi"):
@@ -85,7 +72,11 @@ with tab2:
 		
 	
 	st.header("Personalized communication ")
-	response2 = ''
+	
+	send_button = st.button("Send communication")
+	if send_button:
+		st.write('completed')
+		
 	with st.form("communication"):
 		name = st.selectbox('Please select name',df["name"])
 		intent_of_mail = st.text_input(label ="Intent of mail" , placeholder = 'Intent')
@@ -105,9 +96,3 @@ with tab2:
 			st.write()
 			st.markdown(response2)
 
-	if response2 != '':
-		st.download_button('Download text', response2)
-
-		with open('employees.csv', 'rt') as f:
-			st.download_button('Download CSV', f)
-			st.write('Download complete')
