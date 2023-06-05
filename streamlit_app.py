@@ -33,7 +33,7 @@ with tab1:
 
 	
 	st.header("Conversational BI")
-	st.subheader("BI Report (Structure): ")
+	st.subheader("Sample data structure ")
 	st.dataframe(df.head())
 	
 	with st.form("conversation_bi"):
@@ -73,10 +73,10 @@ with tab2:
 	
 	send_button = st.button("Send communication")
 	if send_button:
-		st.write('Communication sent')
+		st.write('')
 		
 	with st.form("communication"):
-		name = st.selectbox('Please select name',df["Name"])
+		name = st.selectbox('Please select agent to check outgoing communication',df["Name"])
 		category = df[df.Name == name]['Category'].to_string(index=False)
 		target = df[df.Name == name]['Target'].to_string(index=False)
 		curr_sales = df[df.Name == name]['Sales'].to_string(index=False)
