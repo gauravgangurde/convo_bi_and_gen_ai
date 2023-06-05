@@ -79,7 +79,7 @@ with tab2:
 		name = st.selectbox('Please select name',df["Name"])
 		category = df[df.Name == name]['Category'].to_string(index=False)
 		target = df[df.Name == name]['Sales target'].to_string(index=False)
-		latest_performance = df[df.Name == name]['Sales achieved'].to_string(index=False)
+		curr_sales = df[df.Name == name]['Sales achieved'].to_string(index=False)
 		growth = df[df.Name == name]['Sales growth'].to_string(index=False)
 		
 		# Every form must have a submit button.
@@ -88,10 +88,10 @@ with tab2:
 			response2 = openai_response(f"""Your task is to write mail to {name} about their performance data delimited by three backticks,
 					analysing performance data, give feedback, suggesting improvment areas, and it should include 2 sales improvement article or training link references based on performance category
 					Please keep the mail concise and sign it as 'Manager'
-					performance data : ```{name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance}
-					 and their total sales growth with respective previous month performance is {growth}```
+					performance data : ```{name} is {category} with their target, their latest target was $ {target} and current sales is $ {curr_sales}
+					 and their total sales growth with respective previous month sales performance is {growth}```
 					 """)
-			st.text(f"""Name: {name}\nCategory : {category}\nTarget : {target}\nLatest performance : {latest_performance}\nSales growth: {growth}""")
+			st.text(f"""Name: {name}\nCategory : {category}\nTarget : $ {target}\nLCurrnt Sales : $ {curr_sales}\nSales growth: {growth}""")
 			st.write()
 			st.markdown(response2)
 
