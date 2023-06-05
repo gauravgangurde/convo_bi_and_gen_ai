@@ -91,7 +91,7 @@ with tab2:
 			#		performance data : ```{name} is {category} with their target, their latest target was {target} and current sales performance is {curr_sales}
 			#		 and their total sales growth with respective previous month sales performance is {growth}```
 			#		 """)
-			#st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nLCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
+			#st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
 			#st.write()
 			#st.markdown(response2)
 			
@@ -103,7 +103,7 @@ with tab2:
 			curr_sales = df_mail[df_mail.Name == name]['Sales'].to_string(index=False)
 			growth = df_mail[df_mail.Name == name]['Growth'].to_string(index=False)
 			
-			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nLCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
+			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
 			st.write()
-			st.markdown(df_mail[df_mail.Name == name]['mail'].to_string(index=False))
+			st.text(df_mail[df_mail.Name == name]['mail'].to_string(index=False))
 
