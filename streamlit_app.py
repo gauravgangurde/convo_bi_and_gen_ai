@@ -109,5 +109,5 @@ with tab2:
 			
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
 			st.write()
-			#st.markdown(ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10))
+			st.markdown(ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10))
 
