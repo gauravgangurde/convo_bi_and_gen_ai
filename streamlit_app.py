@@ -79,16 +79,17 @@ with tab2:
 		category = df[df.Name == name]['Category'].to_string(index=False)
 		target = df[df.Name == name]['Sales target'].to_string(index=False)
 		latest_performance = df[df.Name == name]['Sales achieved'].to_string(index=False)
+		growth = df[df.Name == name]['Sales growth'].to_string(index=False)
 		
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Submit")
 		if submitted2:
-			response2 = openai_response(f"""Write a feedback mail to a salesperson {name} as their employer based on following information starts and ends with triplle dashes marks,
-					Analyse the data to determine whether a salesperson's performance is above or below target and how it impacts the performance category,
-					offer some insight based on performance and their category,
-					--- {name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance} ---
-					""")
-			st.text(f"""Name: {name}\nCategory : {category}\nTarget : {target}\nLatest performance : {latest_performance}""")
+			response2 = openai_response(f"""Your task is to write feedback mail to {name} as their employer based on their performance category and data delimited by triple dashes,
+						Analyse the given data and include business insights,
+						add reference sales articles or tarining urls if their performance is not upto mark to make improvement,
+						--- {name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance} and their total sales growth is {growth}---
+						""")
+			st.text(f"""Name: {name}\nCategory : {category}\nTarget : {target}\nLatest performance : {latest_performance}\nSales growth: {growth}""")
 			st.write()
 			st.markdown(response2)
 
