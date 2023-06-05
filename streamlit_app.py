@@ -20,7 +20,7 @@ with tab1:
 	
 	llm = OpenAI(api_token=st.secrets["chat_gpt_key"])
 	
-	pandas_ai = PandasAI(llm, conversational=False)#, enforce_privacy = True)
+	pandas_ai = PandasAI(llm, conversational=False, enforce_privacy = True)
 	
 	
 	ls = ['chart','plot','graph','trend']
