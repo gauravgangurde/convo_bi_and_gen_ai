@@ -105,5 +105,5 @@ with tab2:
 			
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
 			st.write()
-			st.text(df_mail[df_mail.Name == name]['mail'].to_string(index=False))
+			st.write(df_mail[df_mail.Name == name]['mail'].to_string(index=False))
 
