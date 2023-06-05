@@ -86,7 +86,7 @@ with tab2:
 		if submitted2:
 			response2 = openai_response(f"""Your task is to write feedback mail to {name} as their employer based on their performance category and data delimited by triple dashes,
 						Analyse the given data and include business insights,
-						add reference sales articles or tarining urls if their performance is not upto mark to make improvement,
+						add reference sales articles or tarining urls in the mail body if their performance is not upto mark to make improvement,
 						--- {name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance} and their total sales growth is {growth}---
 						""")
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : {target}\nLatest performance : {latest_performance}\nSales growth: {growth}""")
