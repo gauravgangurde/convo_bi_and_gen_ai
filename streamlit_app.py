@@ -78,9 +78,9 @@ with tab2:
 	with st.form("communication"):
 		name = st.selectbox('Please select name',df["Name"])
 		category = df[df.Name == name]['Category'].to_string(index=False)
-		target = df[df.Name == name]['Sales target'].to_string(index=False)
-		curr_sales = df[df.Name == name]['Sales achieved'].to_string(index=False)
-		growth = df[df.Name == name]['Sales growth'].to_string(index=False)
+		target = df[df.Name == name]['Target'].to_string(index=False)
+		curr_sales = df[df.Name == name]['Sales'].to_string(index=False)
+		growth = df[df.Name == name]['Growth'].to_string(index=False)
 		
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Submit")
