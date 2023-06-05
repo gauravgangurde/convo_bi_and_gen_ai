@@ -63,7 +63,8 @@ with tab2:
 		messages = [
 			{"role":"system", "content":"You are helpful assistant."},
 			{"role":"user","content": query}
-		]
+		],
+		temperature = 0,
 		)
 		return response.choices[0]['message']['content']   
 		
