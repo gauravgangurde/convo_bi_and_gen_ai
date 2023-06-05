@@ -85,7 +85,7 @@ with tab2:
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Submit")
 		if submitted2:
-			response2 = openai_response(f"""Your task is to write 400 word mail to insurance agent about his performance data delimited by three backticks,
+			response2 = openai_response(f"""Your task is to write mail to insurance agent about his performance data delimited by three backticks,
 					analysing performance data, give feedback, suggesting improvment areas, and it should include 2 sales improvement article or training link references based on performance category
 					Please keep the mail concise and sign it as 'Manager'
 					performance data : ```{name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance}
