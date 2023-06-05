@@ -77,21 +77,33 @@ with tab2:
 		
 	with st.form("communication"):
 		name = st.selectbox('Please select agent to check outgoing communication',df["Name"])
-		category = df[df.Name == name]['Category'].to_string(index=False)
-		target = df[df.Name == name]['Target'].to_string(index=False)
-		curr_sales = df[df.Name == name]['Sales'].to_string(index=False)
-		growth = df[df.Name == name]['Growth'].to_string(index=False)
+		#category = df[df.Name == name]['Category'].to_string(index=False)
+		#target = df[df.Name == name]['Target'].to_string(index=False)
+		#curr_sales = df[df.Name == name]['Sales'].to_string(index=False)
+		#growth = df[df.Name == name]['Growth'].to_string(index=False)
 		
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Submit")
 		if submitted2:
-			response2 = openai_response(f"""Your task is to write mail to {name} about their performance data delimited by three backticks,
-					analysing performance data, give feedback, suggesting improvment areas, and it should include 2 sales improvement article or training link references based on performance category
-					Please keep the mail concise and sign it as 'Manager'
-					performance data : ```{name} is {category} with their target, their latest target was {target} and current sales performance is {curr_sales}
-					 and their total sales growth with respective previous month sales performance is {growth}```
-					 """)
+			#response2 = openai_response(f"""Your task is to write mail to {name} about their performance data delimited by three backticks,
+			#		analysing performance data, give feedback, suggesting improvment areas, and it should include 2 sales improvement article or training link references based on performance category
+			#		Please keep the mail concise and sign it as 'Manager'
+			#		performance data : ```{name} is {category} with their target, their latest target was {target} and current sales performance is {curr_sales}
+			#		 and their total sales growth with respective previous month sales performance is {growth}```
+			#		 """)
+			#st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nLCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
+			#st.write()
+			#st.markdown(response2)
+			
+			
+			df_mail = pd.read_excel('data-mail.xlsx')
+			
+			category = df_mail[df_mail.Name == name]['Category'].to_string(index=False)
+			target = df_mail[df_mail.Name == name]['Target'].to_string(index=False)
+			curr_sales = df_mail[df_mail.Name == name]['Sales'].to_string(index=False)
+			growth = df_mail[df_mail.Name == name]['Growth'].to_string(index=False)
+			
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nLCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
 			st.write()
-			st.markdown(response2)
+			st.markdown(df_mail[df_mail.Name == name]['mail'].to_string(index=False))
 
