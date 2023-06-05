@@ -84,7 +84,7 @@ with tab2:
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Submit")
 		if submitted2:
-			response2 = openai_response(f"""Your task is to write appraisal mail to insurance agent analysing their performance,
+			response2 = openai_response(f"""Your task is to write 500 words appraisal mail to insurance agent analysing their performance,
 					agent data is delimited by triple backticks,
 					1)Analyse given data include that analysis in mail body in detail
 					2) Mail should include sales improvement article or training link references based on performance category
