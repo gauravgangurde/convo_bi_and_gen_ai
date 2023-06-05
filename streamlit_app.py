@@ -86,7 +86,7 @@ with tab2:
 		if submitted2:
 			response2 = openai_response(f"""Your task is to write appraisal mail to insurance agent analysing their performance,
 					agent data is delimited by triple backticks,
-					1)Analyse given data
+					1)Analyse given data include that analysis in mail body in detail
 					2) Mail should include sales improvement article or training link references based on performance category
 					3)sign mail as 'Manager'
 					data : ```{name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance}
