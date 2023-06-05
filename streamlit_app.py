@@ -108,6 +108,6 @@ with tab2:
 			#growth = df_mail[df_mail.Name == name]['Growth'].to_string(index=False)
 			
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
-			st.write()
-			st.markdown(ws.cell(row = df.loc[df.Name == name].index[0], column = 10))
+			st.write(df.loc[df.Name == name].index[0])
+			#st.markdown(ws.cell(row = df.loc[df.Name == name].index[0], column = 10))
 
