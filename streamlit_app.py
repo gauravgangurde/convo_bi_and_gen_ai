@@ -86,14 +86,12 @@ with tab2:
 		if submitted2:
 			response2 = openai_response(f"""Your task is to write appraisal mail to insurance agent analysing their performance,
 					agent data is delimited by triple backticks,
-					analyse data and draft mail with below point, according to it
-					1)if agents current sales performnace is below target, provide sales insight and offer sales improvement exercise, articles and training reference links in email body
-					2)if agents current sales performance is above target, applaud them for their achievemnet
-					3)if sales growth is negative then give some insight for improvement
-					4)if sales growth is positive then congratulate them and
-					And sign mail as 'Manager'
-					
-					data : ```{name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance} and their total sales growth is {growth}```
+					Analyse given data first then include below to do if condition met
+					1) condition >> performance below target. to do >> add references to sales improvement articles and tarining links
+					2) condition >> sales growth is in negative. to do >> point that out and add some insights
+					Then write detail mail and sign mail as 'Manager'
+					data : ```{name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance}
+					 and their total sales growth with respective previous month is {growth}```
 					""")
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : {target}\nLatest performance : {latest_performance}\nSales growth: {growth}""")
 			st.write()
