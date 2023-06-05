@@ -1,4 +1,4 @@
-Agent Id,Name,Category,Age,Region,Sales target,Sales achieved,expense,Sales growth
+Agent Id,Name,Category,Age,Region,Target,Sales,Expense,Growth
 A01,Donald OConnell,Consistent non-performer,53,California,15000,11165,630.1,3.81%
 A02,Douglas Grant,non-performer to performer,43,Colorado,15000,15967,569.4,1.80%
 A03,Jennifer Whalen,performer to non-performer,29,Nevada,15000,13418,873.6,-0.90%
