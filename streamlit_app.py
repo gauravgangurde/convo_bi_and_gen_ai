@@ -6,7 +6,7 @@ from pandasai.llm.openai import OpenAI
 from PIL import Image
 import matplotlib.pyplot as plt
 import openai
-import openpyxl
+from openpyxl import workbook
 
 #EXL logo
 image = Image.open('exl.png')
@@ -96,7 +96,7 @@ with tab2:
 			#st.write()
 			#st.markdown(response2)
 			
-			wb= openpyxl.workbook('data-mail.xlsx')
+			wb= workbook('data-mail.xlsx')
 			ws = wb.active
 			
 			#df_mail = pd.read_excel('data-mail.xlsx')
