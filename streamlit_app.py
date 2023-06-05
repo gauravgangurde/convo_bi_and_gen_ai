@@ -84,11 +84,15 @@ with tab2:
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Submit")
 		if submitted2:
-			response2 = openai_response(f"""Your task is to write feedback mail to {name} as their employer based on their performance category and data delimited by triple dashes,
-						Analyse the given data and include business insights,
-						add reference sales articles or tarining urls in the mail body if their performance is not upto mark to make improvement,
-						--- {name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance} and their total sales growth is {growth}---
-						""")
+			response2 = openai_response(f"""Your task is to write appraisal mail to insurance agent analysing their performance,
+					agent data is delimited by triple backticks,
+					```{name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance} and their total sales growth is {growth}```
+					if agents current sales performnace is below target, provide sales insight and offer sales improvement exercise, articles and training reference links in email body
+					if agents current sales performance is above target, applaud them for their achievemnet
+					if sales growth is negative then give some insight for improvement
+					if sales growth is positive then congratulate them and
+					And sign mail as 'Manager'
+					""")
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : {target}\nLatest performance : {latest_performance}\nSales growth: {growth}""")
 			st.write()
 			st.markdown(response2)
