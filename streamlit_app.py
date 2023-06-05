@@ -72,7 +72,7 @@ with tab2:
 	
 	st.header("Personalized communication ")
 	
-	send_button = st.button("Send communication")
+	send_button = st.button("Generate Communication")
 	if send_button:
 		st.write('')
 		
