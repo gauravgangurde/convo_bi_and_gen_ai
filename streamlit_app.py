@@ -91,7 +91,7 @@ with tab2:
 					2) Mail should include sales improvement article or training link references based on performance category
 					3)sign mail as 'Manager'
 					data : ```{name} is {category} with their target, their latest target was {target} and latest performance was {latest_performance}
-					 and their total sales growth with respective previous month is {growth}```
+					 and their total sales growth with respective previous month performance is {growth}```
 					""")
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : {target}\nLatest performance : {latest_performance}\nSales growth: {growth}""")
 			st.write()
