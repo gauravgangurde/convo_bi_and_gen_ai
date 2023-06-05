@@ -6,6 +6,7 @@ from pandasai.llm.openai import OpenAI
 from PIL import Image
 import matplotlib.pyplot as plt
 import openai
+import openpyxl
 
 #EXL logo
 image = Image.open('exl.png')
@@ -77,10 +78,10 @@ with tab2:
 		
 	with st.form("communication"):
 		name = st.selectbox('Please select agent to check outgoing communication',df["Name"])
-		#category = df[df.Name == name]['Category'].to_string(index=False)
-		#target = df[df.Name == name]['Target'].to_string(index=False)
-		#curr_sales = df[df.Name == name]['Sales'].to_string(index=False)
-		#growth = df[df.Name == name]['Growth'].to_string(index=False)
+		category = df[df.Name == name]['Category'].to_string(index=False)
+		target = df[df.Name == name]['Target'].to_string(index=False)
+		curr_sales = df[df.Name == name]['Sales'].to_string(index=False)
+		growth = df[df.Name == name]['Growth'].to_string(index=False)
 		
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Submit")
@@ -95,15 +96,17 @@ with tab2:
 			#st.write()
 			#st.markdown(response2)
 			
+			wb= openpyxl.workbook('data-mail.xlsx')
+			ws = wb.active
 			
-			df_mail = pd.read_excel('data-mail.xlsx')
-			
-			category = df_mail[df_mail.Name == name]['Category'].to_string(index=False)
-			target = df_mail[df_mail.Name == name]['Target'].to_string(index=False)
-			curr_sales = df_mail[df_mail.Name == name]['Sales'].to_string(index=False)
-			growth = df_mail[df_mail.Name == name]['Growth'].to_string(index=False)
+			#df_mail = pd.read_excel('data-mail.xlsx')
+			#
+			#category = df_mail[df_mail.Name == name]['Category'].to_string(index=False)
+			#target = df_mail[df_mail.Name == name]['Target'].to_string(index=False)
+			#curr_sales = df_mail[df_mail.Name == name]['Sales'].to_string(index=False)
+			#growth = df_mail[df_mail.Name == name]['Growth'].to_string(index=False)
 			
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
 			st.write()
-			st.markdown(df_mail[df_mail.Name == name]['mail'])
+			st.markdown(ws.cell(row = df.loc[df_mail.Name == name].index[0], column = 10))
 
