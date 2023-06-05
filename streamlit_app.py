@@ -96,7 +96,7 @@ with tab2:
 			#st.write()
 			#st.markdown(response2)
 			
-			wb= workbook('data-mail.xlsx')
+			wb= workbook("data-mail.xlsx")
 			ws = wb.active
 			
 			#df_mail = pd.read_excel('data-mail.xlsx')
