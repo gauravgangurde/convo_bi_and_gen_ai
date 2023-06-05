@@ -1,51 +1,51 @@
-Agent Id,Name,Category,Age,Region,Target,Sales,Expense,Growth
+Agent Id,Name,Category,Age,States,Target,Sales,Expense,Growth
 A01,Donald OConnell,Consistent non-performer,53,California,15000,11165,630.1,3.81%
-A02,Douglas Grant,non-performer to performer,43,Colorado,15000,15967,569.4,1.80%
+A02,Douglas Grant,non-performer to performer,43,Nevada,15000,15967,569.4,1.80%
 A03,Jennifer Whalen,performer to non-performer,29,Nevada,15000,13418,873.6,-0.90%
 A04,Michael Hartstein,Consistent performer,39,Utah,15000,18429,740.4,1.66%
 A05,Pat Fay,Consistent performer,28,Oregon,15000,18303,848.1,1.20%
 A06,Susan Mavris,Consistent non-performer,40,Arizona,15000,9795,1041,4.67%
-A07,Hermann Baer,performer to non-performer,50,Hawaii,15000,13364,946.1,-0.13%
+A07,Hermann Baer,performer to non-performer,50,California,15000,13364,946.1,-0.13%
 A08,Shelley Higgins,Consistent performer,46,Arizona,15000,17998,565.8,0.94%
 A09,William Gietz,Consistent performer,36,California,15000,17859,698.5,3.59%
-A10,Steven King,Consistent non-performer,35,Colorado,15000,10253,1046,2.73%
-A11,Neena Kochhar,non-performer to performer,54,New Mexico,15000,16444,681,1.00%
+A10,Steven King,Consistent non-performer,35,California,15000,10253,1046,2.73%
+A11,Neena Kochhar,non-performer to performer,54,Oregon,15000,16444,681,1.00%
 A12,Lex De Haan,performer to non-performer,29,California,15000,13221,829.4,-4.42%
 A13,Alexander Hunold,Consistent performer,57,Nevada,15000,18052,654.2,-1.62%
-A14,Bruce Ernst,Consistent non-performer,38,Idaho,15000,11096,967.9,-2.70%
+A14,Bruce Ernst,Consistent non-performer,38,Utah,15000,11096,967.9,-2.70%
 A15,David Austin,non-performer to performer,28,Utah,15000,15457,561.6,4.32%
 A16,Valli Pataballa,performer to non-performer,46,Arizona,15000,13737,662.9,-2.69%
-A17,Diana Lorentz,Consistent performer,49,Colorado,15000,17289,662.8,1.88%
+A17,Diana Lorentz,Consistent performer,49,California,15000,17289,662.8,1.88%
 A18,Nancy Greenberg,Consistent non-performer,34,Oregon,15000,11470,1033.7,4.99%
 A19,Daniel Faviet,non-performer to performer,34,California,15000,15556,513.6,4.87%
-A20,John Chen,performer to non-performer,55,Alaska,15000,13256,1080.4,-3.85%
+A20,John Chen,performer to non-performer,55,Nevada,15000,13256,1080.4,-3.85%
 A21,Ismael Sciarra,Consistent performer,34,Arizona,15000,18370,824.1,3.48%
 A22,Jose Manuel Urman,Consistent non-performer,36,Nevada,15000,9868,1056.6,-3.97%
 A23,Luis Popp,non-performer to performer,56,California,15000,17182,861.4,2.44%
-A24,Den Raphaely,performer to non-performer,44,New Mexico,15000,13395,957.9,-2.74%
+A24,Den Raphaely,performer to non-performer,44,Utah,15000,13395,957.9,-2.74%
 A25,Alexander Khoo,Consistent performer,38,Utah,15000,18199,562.1,4.97%
-A26,Shelli Baida,Consistent non-performer,55,Colorado,15000,10983,856.7,3.08%
-A27,Sigal Tobias,performer to non-performer,47,Montana,15000,12514,961.6,-4.76%
+A26,Shelli Baida,Consistent non-performer,55,Arizona,15000,10983,856.7,3.08%
+A27,Sigal Tobias,performer to non-performer,47,California,15000,12514,961.6,-4.76%
 A28,Guy Himuro,Consistent performer,53,Arizona,15000,18326,942,-0.13%
 A29,Karen Colmenares,Consistent performer,49,Oregon,15000,18331,594.5,0.95%
-A30,Matthew Weiss,Consistent non-performer,50,Montana,15000,10285,923,-0.90%
+A30,Matthew Weiss,Consistent non-performer,50,Utah,15000,10285,923,-0.90%
 A31,Adam Fripp,non-performer to performer,23,California,15000,15559,633.3,1.40%
-A32,Payam Kaufling,performer to non-performer,29,Idaho,15000,13320,855.5,-1.06%
+A32,Payam Kaufling,performer to non-performer,29,Nevada,15000,13320,855.5,-1.06%
 A33,Shanta Vollman,Consistent performer,29,California,15000,18864,1030.4,-0.84%
 A34,Kevin Mourgos,performer to non-performer,47,Nevada,15000,13315,1059.3,-4.97%
 A35,Julia Nayer,Consistent performer,41,Oregon,15000,18353,567.6,0.50%
-A36,Irene Mikkilineni,performer to non-performer,57,New Mexico,15000,11783,750.4,-3.20%
-A37,James Landry,Consistent performer,32,Alaska,15000,18408,814.3,-2.07%
+A36,Irene Mikkilineni,performer to non-performer,57,Arizona,15000,11783,750.4,-3.20%
+A37,James Landry,Consistent performer,32,Utah,15000,18408,814.3,-2.07%
 A38,Steven Markle,Consistent non-performer,37,Oregon,15000,11636,619,-1.63%
-A39,Laura Bissot,non-performer to performer,55,Hawaii,15000,16594,890.2,3.15%
-A40,Mozhe Atkinson,performer to non-performer,50,Idaho,15000,12526,925,-2.50%
+A39,Laura Bissot,non-performer to performer,55,Arizona,15000,16594,890.2,3.15%
+A40,Mozhe Atkinson,performer to non-performer,50,California,15000,12526,925,-2.50%
 A41,James Marlow,Consistent performer,33,California,15000,18061,604.9,2.55%
 A42,TJ Olson,Consistent non-performer,24,Arizona,15000,10642,922.5,0.48%
 A43,Jason Mallin,non-performer to performer,57,California,15000,16084,894,2.01%
 A44,Michael Rogers,performer to non-performer,42,Nevada,15000,13731,892.7,-2.12%
 A45,Ki Gee,Consistent performer,51,Oregon,15000,17959,1086,4.06%
-A46,Hazel Philtanker,Consistent non-performer,26,Idaho,15000,12308,654.6,-3.06%
+A46,Hazel Philtanker,Consistent non-performer,26,Arizona,15000,12308,654.6,-3.06%
 A47,Renske Ladwig,non-performer to performer,26,Utah,15000,15481,984.3,1.82%
 A48,Stephen Stiles,performer to non-performer,40,California,15000,13406,1046.1,-4.52%
-A49,John Seo,Consistent non-performer,55,Montana,15000,10520,687.5,4.41%
+A49,John Seo,Consistent non-performer,55,Oregon,15000,10520,687.5,4.41%
 A50,Joshua Patel,non-performer to performer,34,Arizona,15000,15834,777.5,4.17%
