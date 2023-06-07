@@ -70,7 +70,7 @@ with tab2:
 	#pie chart for sales by category
 	plt.pie(df2['Sales'], labels= df2['Category'], autopct='%1.1f%%')
 	plt.title('Sales by Category')
-	plt.show()
+	st.pyplot()
 
 	#average sales by category
 	average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
@@ -79,11 +79,11 @@ with tab2:
 	plt.ylabel('Average Sales')
 	plt.title('Average Sales by Category')
 	plt.xticks(rotation=45)
-	plt.show()
+	st.pyplot()
 	
 	generate_mails = st.button("Generate Communication")
 	if generate_mails:
-		st.write('Go to nexttab to validate')
+		st.write('Go to nexttab to validate', key = 'abc')
 
 with tab3:
 			
