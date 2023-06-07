@@ -101,10 +101,11 @@ with tab2:
 		st.pyplot(fig4)
 
 	
-	
-	generate_mails = st.button("Generate Communication", key = '1')
-	if generate_mails:
-		st.write('Go to next tab to validate communication')
+	with st.form("select category"):
+		select_option = st.multiselect('Please select categories', df2['category'].unique())
+		generate_mails = st.button("Generate Communication", key = '1')
+		if generate_mails:
+			st.write('Go to next tab to validate communication')
 
 with tab3:
 			
