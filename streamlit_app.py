@@ -119,8 +119,6 @@ with tab3:
 		st.write()
 		mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
 		st.markdown(mail_response)
-			
-	if len(mail_response) > 0:
 	
 		if st.button('Edit', key = 'ABC'):
 			if not name:
