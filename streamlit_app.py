@@ -70,7 +70,7 @@ with tab2:
 	st.subheader('Categorisation')
 	with st.form("category generation"):
 		temp_var = 'jfsdhgsf'
-		 gen_categories= st.form_submit_button("Generate Categories")
+		gen_categories= st.form_submit_button("Generate Categories")
 		if gen_categories:
 			st.write('Four categories are generated:\n  1) Consistent Performer\n  2) Consistent Non-performer\n  3) Performer to Non-performer\n  4) Non-performer to Performer')
 			st.write('')
