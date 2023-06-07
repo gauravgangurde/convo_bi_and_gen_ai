@@ -68,7 +68,7 @@ with tab2:
 	df2 = pd.read_csv('report.csv')
 	
 	st.subheader('Categorisation')
-	with st.form("category generation")
+	with st.form("category generation"):
 		temp_var = 'jfsdhgsf'
 		 gen_categories= st.form_submit_button("Generate Categories")
 		if gen_categories:
