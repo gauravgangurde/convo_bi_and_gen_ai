@@ -20,6 +20,14 @@ with st.sidebar:
 #define tabs
 tab1, tab2, tab3 = st.tabs(['Analysis','Report', 'Validation'])
 
+ls = ['chart','plot','graph','trend', 'histogram']
+#to check if prompt have chart, graph words
+def contains_substring(string, substrings):
+	for substring in substrings:
+		if substring in string:
+			return True
+	return False
+
 
 # tab1 for raw data analysis
 with tab1:
@@ -27,15 +35,6 @@ with tab1:
 	llm = OpenAI(api_token=st.secrets["chat_gpt_key"])
 	
 	pandas_ai = PandasAI(llm, conversational=False)#, enforce_privacy = True)
-	
-	
-	ls = ['chart','plot','graph','trend', 'histogram']
-	#to check if prompt have chart, graph words
-	def contains_substring(string, substrings):
-		for substring in substrings:
-			if substring in string:
-				return True
-		return False
 
 	
 	st.header("Conversational BI")
@@ -43,24 +42,24 @@ with tab1:
 	st.dataframe(df.head())
 	
 	with st.form("conversation_bi"):
-		
+	
 		query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 		# Every form must have a submit button.
 		submitted1 = st.form_submit_button("Submit")
 		if submitted1:
 			#based on type of response
-            if contains_substring(query.lower(),ls): 
-                fig, x = plt.subplots()
-                response1 = pandas_ai(df, prompt=query)
-                st.pyplot(fig)
-            else:
-                response1 = pandas_ai(df, prompt=query)
-                if isinstance(response, str):
-                    st.text(response1)
+			if contains_substring(query.lower(),ls): 
+				fig, x = plt.subplots()
+				response1 = pandas_ai(df, prompt=query)
+				st.pyplot(fig)
+			else:
+				response1 = pandas_ai(df, prompt=query)
+				if isinstance(response, str):
+					st.text(response1)
 				elif isinstance(response1, pd.DataFrame):
-                    st.dataframe(response1)
-                else:
-                    st.text(response1.to_string(index=False))
+					st.dataframe(response1)
+				else:
+					st.text(response1.to_string(index=False))
 				
 
 
