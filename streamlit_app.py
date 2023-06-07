@@ -145,5 +145,6 @@ with tab3:
 				user_input = st.text_area("Edit the mail",height = 600, value= ws.cell(row = name_index , column = mail_index).value)
 				submitted3 = st.form_submit_button("Save")
 				if submitted3:
-					 ws.cell(row = name_index , column = mail_index).value = user_input
+					ws.cell(row = name_index , column = mail_index).value = user_input
+					wb.save('path') 
 					
