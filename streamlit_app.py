@@ -120,7 +120,7 @@ with tab3:
 			st.write()
 			mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
 			
-			user_input = st.text_area("Edit communication",height = 600, value= mail_response).value)
+			user_input = st.text_area("Edit communication",height = 600, value= mail_response)
 			# Every form must have a submit button
 			submitted3 = st.form_submit_button("Validate")
 			
