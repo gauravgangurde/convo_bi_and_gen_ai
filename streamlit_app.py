@@ -129,4 +129,9 @@ with tab3:
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
 			st.write()
 			st.markdown(ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10).value)
+	with st.button('Edit', key = 'ABC'):
+		if not name:
+			st.write('Please select name first)
+		else:
+			user_input = st.text_area("Edit the text", value='jydhsfctgjuvgfedrgfewucvgfhdrfju fkruehbcvfrehgkvjrehg')
 			
