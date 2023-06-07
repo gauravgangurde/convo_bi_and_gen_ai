@@ -91,12 +91,12 @@ with tab2:
 			
 	
 	
-		st.subheader('Personalization')
-		with st.form("select category"):
-			select_option = st.multiselect('Please select categories', df2['Category'].unique())
-			generate_mails = st.form_submit_button("Generate Communication")
-			if generate_mails:
-				st.write('Go to next tab to validate communication')
+	st.subheader('Personalization')
+	with st.form("select category"):
+		select_option = st.multiselect('Please select categories', df2['Category'].unique())
+		generate_mails = st.form_submit_button("Generate Communication")
+		if generate_mails:
+			st.write('Go to next tab to validate communication')
 
 with tab3:
 			
