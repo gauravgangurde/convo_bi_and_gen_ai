@@ -110,7 +110,6 @@ with tab2:
 with tab3:
 			
 	st.header("Personalized communication ")
-	mail_response = ''
 
 		
 	with st.form("communication"):
@@ -130,10 +129,9 @@ with tab3:
 			st.write()
 			mail_response = ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10).value
 			st.markdown(mail_response)
-	if len(mail_response) > 0:
+	if not mail_response:
+		st.write('Please select name first')
+	else:
 		if st.button('Edit', key = 'ABC'):
-			if not name:
-				st.write('Please select name first')
-			else:
-				user_input = st.text_area("Edit the mail", value= mail_response)
+			user_input = st.text_area("Edit the mail", value= mail_response)
 			
