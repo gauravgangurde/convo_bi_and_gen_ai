@@ -11,7 +11,7 @@ import openpyxl
 #EXL logo
 image = Image.open('exl.png')
 df = pd.read_csv('data.csv')
-
+mail_response = ''
 
 with st.sidebar:
 	st.image(image, width = 150)
