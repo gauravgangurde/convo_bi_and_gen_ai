@@ -83,17 +83,15 @@ with tab2:
 	plt.show()
 	
 	
-#	generate_mails = st.button("Generate Communication")
-#	if generate_mails:
-#		st.write('Go to nexttab to validate', key = 'abc')
+	generate_mails = st.button("Generate Communication", key = '1')
+	if generate_mails:
+		st.write('Go to nexttab to validate')
 
 with tab3:
 			
 	st.header("Personalized communication ")
 	
-	send_button = st.button("Generate Communication")
-	if send_button:
-		st.write('')
+
 		
 	with st.form("communication"):
 		name = st.selectbox('Please select agent to check outgoing communication',df["Name"])
