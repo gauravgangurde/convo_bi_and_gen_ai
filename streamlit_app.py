@@ -102,9 +102,8 @@ with tab3:
 	wb= openpyxl.load_workbook(path)
 	ws = wb.active
 
-		
+	option = st.selectbox("Category", select_option)	
 	with st.form("communication"):
-		option = st.selectbox("Category", select_option)
 		df3 = df2[df2['Category'] == option] #isin(select_option)]
 		name = st.selectbox('Please select agent to check outgoing communication',df3["Name"])
 		category = df2[df2.Name == name]['Category'].to_string(index=False)
