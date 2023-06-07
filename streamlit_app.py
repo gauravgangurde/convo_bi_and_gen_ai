@@ -110,6 +110,9 @@ with tab2:
 with tab3:
 			
 	st.header("Personalized communication ")
+	path = "data-mail.xlsx"
+	wb= openpyxl.load_workbook(path)
+	ws = wb.active
 
 		
 	with st.form("communication"):
@@ -122,9 +125,7 @@ with tab3:
 		submitted2 = st.form_submit_button("Validate")
 		if submitted2:
 			
-			path = "data-mail.xlsx"
-			wb= openpyxl.load_workbook(path)
-			ws = wb.active
+
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
 			st.write()
 			mail_response = ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10).value
