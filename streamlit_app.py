@@ -67,7 +67,9 @@ with tab2:
 
 	df2 = pd.read_csv('report.csv')
 	col1, col2 = st.columns(2)
-	
+	st.subheader('Categorisation')
+	if st.button("Generate Categories"):
+		st.write('Four categories are generated:\n  1) Consistent Performer\n  2) Consistent Non-performer\n  3) Performer to Non-performer\n  4) Non-performer to Performer')
 	with col1:
 		#pie chart for sales by category
 		total_sales = df2.groupby('Category')['Sales'].sum()
@@ -88,7 +90,7 @@ with tab2:
 		
 
 
-	st.subheader('Personalisation')
+	st.subheader('Personalization')
 	with st.form("select category"):
 		select_option = st.multiselect('Please select categories', df2['Category'].unique())
 		generate_mails = st.form_submit_button("Generate Communication")
@@ -116,7 +118,7 @@ with tab3:
 			#name_index = df2.loc[df2.Name == name].index[0] + 2
 			mail_index = 10
 			
-			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\ntotal Sales : ${curr_sales}""")
+			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\ntotal Sales : ${total_sales}""")
 			st.write()
 			mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
 			
