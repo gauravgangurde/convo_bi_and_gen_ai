@@ -68,10 +68,10 @@ with tab2:
 	df2 = pd.read_csv('report.csv')
 	
 	#pie chart for sales by category
-	#total_sales = df2.groupby('Category')['Sales'].sum().reset_index()
-	#plt.pie(total_sales['Sales'], labels= total_sales['Category'], autopct='%1.1f%%')
-	#plt.title('Sales by Category')
-	#plt.show()
+	total_sales = df2.groupby('Category')['Sales'].sum()
+	plt.pie(total_sales.values, labels=total_sales.index, autopct='%1.1f%%')
+	plt.title('Sales by Category')
+	plt.show()
 
 	#average sales by category
 	average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
