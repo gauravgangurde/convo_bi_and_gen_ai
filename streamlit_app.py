@@ -83,9 +83,9 @@ with tab2:
 	plt.show()
 	
 	
-	generate_mails = st.button("Generate Communication")
-	if generate_mails:
-		st.write('Go to nexttab to validate', key = 'abc')
+#	generate_mails = st.button("Generate Communication")
+#	if generate_mails:
+#		st.write('Go to nexttab to validate', key = 'abc')
 
 with tab3:
 			
