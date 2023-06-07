@@ -11,12 +11,17 @@ import openpyxl
 #EXL logo
 image = Image.open('exl.png')
 df = pd.read_csv('data.csv')
+
+
 with st.sidebar:
 	st.image(image, width = 150)
-	st.write('Ask any question on your BI report')
+	st.write('Ask any question on your data')
 
-tab1, tab2 = st.tabs(['Analysis','Communication'])
+#define tabs
+tab1, tab2, tab3 = st.tabs(['Analysis','Report', 'Validation'])
 
+
+# tab1 for raw data analysis
 with tab1:
 	
 	llm = OpenAI(api_token=st.secrets["chat_gpt_key"])
@@ -24,7 +29,7 @@ with tab1:
 	pandas_ai = PandasAI(llm, conversational=False)#, enforce_privacy = True)
 	
 	
-	ls = ['chart','plot','graph','trend']
+	ls = ['chart','plot','graph','trend', 'histogram']
 	#to check if prompt have chart, graph words
 	def contains_substring(string, substrings):
 		for substring in substrings:
@@ -43,33 +48,46 @@ with tab1:
 		# Every form must have a submit button.
 		submitted1 = st.form_submit_button("Submit")
 		if submitted1:
-			if contains_substring(query.lower(),ls): 
-				fig, x = plt.subplots()
-				response1 = pandas_ai(df, prompt=query)
-				st.pyplot(fig)
-				st.text(response1)
-			else:
-				response1 = pandas_ai(df, prompt=query)
-				st.text(response1)
+			#based on type of response
+            if contains_substring(query.lower(),ls): 
+                fig, x = plt.subplots()
+                response1 = pandas_ai(df, prompt=query)
+                st.pyplot(fig)
+            else:
+                response1 = pandas_ai(df, prompt=query)
+                if isinstance(response, str):
+                    st.text(response1)
+				elif isinstance(response1, pd.DataFrame):
+                    st.dataframe(response1)
+                else:
+                    st.text(response1.to_string(index=False))
 				
 
 
 with tab2:
 
-	openai.api_key = st.secrets["chat_gpt_key"]
+	df2 = pd.read_csv('report.csv')
 	
-	def openai_response(query):
-		response = openai.ChatCompletion.create(
-		model="gpt-3.5-turbo",
-		messages = [
-			{"role":"system", "content":"You are helpful assistant."},
-			{"role":"user","content": query}
-		],
-		temperature = 0,
-		)
-		return response.choices[0]['message']['content']   
-		
+	#pie chart for sales by category
+	plt.pie(df2['Sales'], labels= df2['category'], autopct='%1.1f%%')
+	plt.title('Sales by Category')
+	plt.show()
+
+	#average sales by category
+	average_sales = df.groupby('Category')['Sales'].mean().reset_index()
+	plt.bar(average_sales['Category'], average_sales['Sales'])
+	plt.xlabel('Category')
+	plt.ylabel('Average Sales')
+	plt.title('Average Sales by Category')
+	plt.xticks(rotation=45)
+	plt.show()
 	
+	generate_mails = st.button("Generate Communication")
+	if generate_mails:
+		st.write('Go to nexttab to validate')
+
+with tab3:
+			
 	st.header("Personalized communication ")
 	
 	send_button = st.button("Generate Communication")
@@ -81,33 +99,14 @@ with tab2:
 		category = df[df.Name == name]['Category'].to_string(index=False)
 		target = df[df.Name == name]['Target'].to_string(index=False)
 		curr_sales = df[df.Name == name]['Sales'].to_string(index=False)
-		growth = df[df.Name == name]['Growth'].to_string(index=False)
-		
 		# Every form must have a submit button.
-		submitted2 = st.form_submit_button("Submit")
+		submitted2 = st.form_submit_button("Validate")
 		if submitted2:
-			#response2 = openai_response(f"""Your task is to write mail to {name} about their performance data delimited by three backticks,
-			#		analysing performance data, give feedback, suggesting improvment areas, and it should include 2 sales improvement article or training link references based on performance category
-			#		Please keep the mail concise and sign it as 'Manager'
-			#		performance data : ```{name} is {category} with their target, their latest target was {target} and current sales performance is {curr_sales}
-			#		 and their total sales growth with respective previous month sales performance is {growth}```
-			#		 """)
-			#st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
-			#st.write()
-			#st.markdown(response2)
 			
 			path = "data-mail.xlsx"
 			wb= openpyxl.load_workbook(path)
 			ws = wb.active
-			
-			#df_mail = pd.read_excel('data-mail.xlsx')
-			#
-			#category = df_mail[df_mail.Name == name]['Category'].to_string(index=False)
-			#target = df_mail[df_mail.Name == name]['Target'].to_string(index=False)
-			#curr_sales = df_mail[df_mail.Name == name]['Sales'].to_string(index=False)
-			#growth = df_mail[df_mail.Name == name]['Growth'].to_string(index=False)
-			
-			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}\nSales growth: {growth}""")
+			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
 			st.write()
 			st.markdown(ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10).value)
-
+			
