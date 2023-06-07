@@ -95,7 +95,7 @@ with tab2:
 		#average sales by region
 		average_sales2 = df2.groupby('Region')['Sales'].mean().reset_index()
 		fig4, ax4= plt.subplots()
-		ax4.bar(average_sales2['Category'], average_sales2['Sales'])
+		ax4.bar(average_sales2['Region'], average_sales2['Sales'])
 		ax4.set_title('Average Sales by Region')
 		plt.xticks(rotation=45)
 		st.pyplot(fig4)
