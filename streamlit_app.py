@@ -71,16 +71,16 @@ with tab2:
 	total_sales = df2.groupby('Category')['Sales'].sum()
 	fig1, ax1= plt.subplots()
 	ax1.pie(total_sales.values, labels=total_sales.index, autopct='%1.1f%%')
-	ax1.title('Sales by Category')
+	ax1.set_title('Sales by Category')
 	st.pyplot(fig1)
 
 	#average sales by category
 	average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
 	fig2, ax2= plt.subplots()
 	ax2.bar(average_sales['Category'], average_sales['Sales'])
-	ax2.xlabel('Category')
-	ax2.ylabel('Average Sales')
-	ax2.title('Average Sales by Category')
+	ax2.set_xlabel('Category')
+	ax2.set_ylabel('Average Sales')
+	ax2.set_title('Average Sales by Category')
 	plt.xticks(rotation=45)
 	st.pyplot(fig2)
 	
