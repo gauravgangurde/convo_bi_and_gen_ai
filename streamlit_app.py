@@ -73,7 +73,7 @@ with tab2:
 	plt.show()
 
 	#average sales by category
-	average_sales = df.groupby(level = "Category")['Sales'].mean().reset_index()
+	average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
 	plt.bar(average_sales['Category'], average_sales['Sales'])
 	plt.xlabel('Category')
 	plt.ylabel('Average Sales')
