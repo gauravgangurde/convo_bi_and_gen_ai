@@ -110,6 +110,7 @@ with tab3:
 	curr_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
 	
 	if not name:
+		st.write("")
 	else:
 		with st.form("edit communication"):
 			#name_index = df2.loc[df2.Name == name].index[0] + 2
