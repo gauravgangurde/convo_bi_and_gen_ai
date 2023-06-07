@@ -120,20 +120,19 @@ with tab3:
 		mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
 		st.markdown(mail_response)
 			
-	#if "mail_response" in globals():
-	#	st.write('Please select name first')
-	#else:
-	if st.button('Edit', key = 'ABC'):
-		if not name:
-			st.write('Please select name first')
-		else:
-			with st.form("edit communication"):
-				#name_index = df2.loc[df2.Name == name].index[0] + 2
-				mail_index = 10
-				user_input = st.text_area("Edit the mail",height = 600, value= ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
-				submitted3 = st.form_submit_button("Validate")
-				if submitted3:
-					ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value = user_input
-					st.write("Message updated successfully")
-					st.markdown(ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
-					
+	if len(mail_response) > 0:
+	
+		if st.button('Edit', key = 'ABC'):
+			if not name:
+				st.write('Please select name first')
+			else:
+				with st.form("edit communication"):
+					#name_index = df2.loc[df2.Name == name].index[0] + 2
+					mail_index = 10
+					user_input = st.text_area("Edit the mail",height = 600, value= ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
+					submitted3 = st.form_submit_button("Validate")
+					if submitted3:
+						ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value = user_input
+						st.write("Message updated successfully")
+						st.markdown(ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
+						
