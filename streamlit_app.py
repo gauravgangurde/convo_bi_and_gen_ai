@@ -114,7 +114,8 @@ with tab3:
 
 		
 	with st.form("communication"):
-		name = st.selectbox('Please select agent to check outgoing communication',df["Name"])
+		df3 = df2[df2['Category'] = select_option]
+		name = st.selectbox('Please select agent to check outgoing communication',df3["Name"])
 		category = df2[df2.Name == name]['Category'].to_string(index=False)
 		target = df2[df2.Name == name]['Target'].to_string(index=False)
 		curr_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
