@@ -129,7 +129,7 @@ with tab3:
 			st.write()
 			mail_response = ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10).value
 			st.markdown(mail_response)
-	if not mail_response:
+	if "mail_response" in globals():
 		st.write('Please select name first')
 	else:
 		if st.button('Edit', key = 'ABC'):
