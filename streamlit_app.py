@@ -113,7 +113,7 @@ with tab3:
 	#name_index = df2.loc[df2.Name == name].index[0] + 2
 	mail_index = 10
 	# Every form must have a submit button.
-	submitted2 = st.form_submit_button("Open message")
+	submitted2 = st.button("Open message")
 	if submitted2:
 		st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
 		st.write()
