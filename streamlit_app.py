@@ -75,15 +75,30 @@ with tab2:
 		ax1.pie(total_sales.values, labels=total_sales.index, autopct='%1.1f%%')
 		ax1.set_title('Sales by Category')
 		st.pyplot(fig1)
+		
+		#pie chart for sales by region
+		total_sales2 = df2.groupby('Region')['Sales'].sum()
+		fig3, ax3= plt.subplots()
+		ax3.pie(total_sales2.values, labels=total_sales2.index, autopct='%1.1f%%')
+		ax3.set_title('Sales by Category')
+		st.pyplot(fig3)
 
 	with col2:
 		#average sales by category
 		average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
 		fig2, ax2= plt.subplots()
 		ax2.bar(average_sales['Category'], average_sales['Sales'])
-		ax2.set_title('Average Sales by Category')
+		ax2.set_title('Average Sales by Region')
 		plt.xticks(rotation=45)
 		st.pyplot(fig2)
+		
+		#average sales by region
+		average_sales2 = df2.groupby('Region')['Sales'].mean().reset_index()
+		fig4, ax4= plt.subplots()
+		ax4.bar(average_sales2['Category'], average_sales2['Sales'])
+		ax4.set_title('Average Sales by Region')
+		plt.xticks(rotation=45)
+		st.pyplot(fig4)
 	
 	
 	generate_mails = st.button("Generate Communication", key = '1')
