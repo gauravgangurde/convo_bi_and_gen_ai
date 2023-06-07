@@ -107,7 +107,7 @@ with tab3:
 	name = st.selectbox('Please select agent to check outgoing communication',df3["Name"])
 	category = df2[df2.Name == name]['Category'].to_string(index=False)
 	target = df2[df2.Name == name]['Target'].to_string(index=False)
-	curr_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
+	total_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
 	
 	if not name:
 		st.write("")
@@ -116,7 +116,7 @@ with tab3:
 			#name_index = df2.loc[df2.Name == name].index[0] + 2
 			mail_index = 10
 			
-			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
+			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\ntotal Sales : ${curr_sales}""")
 			st.write()
 			mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
 			
