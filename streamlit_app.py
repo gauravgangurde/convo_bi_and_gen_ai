@@ -72,7 +72,6 @@ with tab2:
 	plt.pie(total_sales['Sales'], labels= total_sales['Category'], autopct='%1.1f%%')
 	plt.title('Sales by Category')
 	plt.show()
-	fig1 = plt.subplots()
 
 	#average sales by category
 	average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
@@ -82,11 +81,6 @@ with tab2:
 	plt.title('Average Sales by Category')
 	plt.xticks(rotation=45)
 	plt.show()
-	fig2 = plt.subplots()
-	
-	
-	st.pyplot(fig1)
-	st.pyplot(fig2)
 	
 	
 	generate_mails = st.button("Generate Communication")
