@@ -87,7 +87,7 @@ with tab2:
 	
 	generate_mails = st.button("Generate Communication", key = '1')
 	if generate_mails:
-		st.write('Go to nexttab to validate')
+		st.write('Go to next tab to validate communication')
 
 with tab3:
 			
