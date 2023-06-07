@@ -81,7 +81,7 @@ with tab2:
 	ax2.xlabel('Category')
 	ax2.ylabel('Average Sales')
 	ax2.title('Average Sales by Category')
-	ax2.xticks(rotation=45)
+	plt.xticks(rotation=45)
 	st.pyplot(fig2)
 	
 	
