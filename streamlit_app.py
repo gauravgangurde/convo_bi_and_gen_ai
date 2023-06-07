@@ -109,31 +109,24 @@ with tab3:
 	target = df2[df2.Name == name]['Target'].to_string(index=False)
 	curr_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
 	
-	# row and column index of required obs
-	#name_index = df2.loc[df2.Name == name].index[0] + 2
-	mail_index = 10
-	# Every form must have a submit button.
-	submitted2 = st.button("Open message")
-	if submitted2:
-		st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
-		st.write()
-		mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
-		#st.markdown(mail_response)
-	
-		#if st.button('Edit', key = 'ABC'):
-		#name_index = df2.loc[df2.Name == name].index[0] + 2
-	with st.form("edit communication"):
-		#name_index = df2.loc[df2.Name == name].index[0] + 2
-		mail_index = 10
-		st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
-		st.write()
-		mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
-		user_input = st.text_area("Edit communication",height = 600, value= ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
-		submitted3 = st.form_submit_button("Validate")
-		if submitted3:
-			ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value = user_input
-			wb.save(path)
-			st.write("Message updated successfully")
-		
-			#st.markdown(ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
+	if not name:
+	else:
+		with st.form("edit communication"):
+			#name_index = df2.loc[df2.Name == name].index[0] + 2
+			mail_index = 10
+			
+			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
+			st.write()
+			mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
+			
+			user_input = st.text_area("Edit communication",height = 600, value= mail_response).value)
+			# Every form must have a submit button
+			submitted3 = st.form_submit_button("Validate")
+			
+			if submitted3:
+				ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value = user_input
+				wb.save(path)
+				st.write("Message updated successfully")
+			
+				#st.markdown(ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
 					
