@@ -97,9 +97,9 @@ with tab3:
 		
 	with st.form("communication"):
 		name = st.selectbox('Please select agent to check outgoing communication',df["Name"])
-		category = df[df.Name == name]['Category'].to_string(index=False)
-		target = df[df.Name == name]['Target'].to_string(index=False)
-		curr_sales = df[df.Name == name]['Sales'].to_string(index=False)
+		category = df2[df2.Name == name]['Category'].to_string(index=False)
+		target = df2[df2.Name == name]['Target'].to_string(index=False)
+		curr_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Validate")
 		if submitted2:
