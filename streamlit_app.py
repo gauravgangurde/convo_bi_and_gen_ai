@@ -128,11 +128,12 @@ with tab3:
 			ws = wb.active
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
 			st.write()
-			st.markdown(ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10).value)
-
-	if st.button('Edit', key = 'ABC'):
-		if not name:
-			st.write('Please select name first')
-		else:
-			user_input = st.text_area("Edit the text", value='jydhsfctgjuvgfedrgfewucvgfhdrfju fkruehbcvfrehgkvjrehg')
+			mail_response = ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10).value
+			st.markdown(mail_response)
+	if mail_response:
+		if st.button('Edit', key = 'ABC'):
+			if not name:
+				st.write('Please select name first')
+			else:
+				user_input = st.text_area("Edit the mail", value= mail_response)
 			
