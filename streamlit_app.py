@@ -68,7 +68,7 @@ with tab2:
 	df2 = pd.read_csv('report.csv')
 	
 	#pie chart for sales by category
-	plt.pie(df2['Sales'], labels= df2['category'], autopct='%1.1f%%')
+	plt.pie(df2['Sales'], labels= df2['Category'], autopct='%1.1f%%')
 	plt.title('Sales by Category')
 	plt.show()
 
