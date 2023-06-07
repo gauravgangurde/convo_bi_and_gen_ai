@@ -130,7 +130,7 @@ with tab3:
 		if submitted2:
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
 			st.write()
-			mail_response = ws.cell(row = df.loc[df.Name == name].index[0] + 2 , column = mail_index).value
+			mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
 			st.markdown(mail_response)
 			
 	#if "mail_response" in globals():
@@ -143,9 +143,9 @@ with tab3:
 			with st.form("edit communication"):
 				#name_index = df2.loc[df2.Name == name].index[0] + 2
 				mail_index = 10
-				user_input = st.text_area("Edit the mail",height = 600, value= ws.cell(row = df.loc[df.Name == name].index[0] + 2 , column = mail_index).value)
+				user_input = st.text_area("Edit the mail",height = 600, value= ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
 				submitted3 = st.form_submit_button("Save")
 				if submitted3:
-					ws.cell(row = df.loc[df.Name == name].index[0] + 2 , column = mail_index).value = user_input
+					ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value = user_input
 					wb.save('path') 
 					
