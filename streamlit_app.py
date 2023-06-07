@@ -66,23 +66,26 @@ with tab1:
 with tab2:
 
 	df2 = pd.read_csv('report.csv')
+	col1, cole = st.columns(2)
 	
-	#pie chart for sales by category
-	total_sales = df2.groupby('Category')['Sales'].sum()
-	fig1, ax1= plt.subplots()
-	ax1.pie(total_sales.values, labels=total_sales.index, autopct='%1.1f%%')
-	ax1.set_title('Sales by Category')
-	st.pyplot(fig1)
+	with col1:
+		#pie chart for sales by category
+		total_sales = df2.groupby('Category')['Sales'].sum()
+		fig1, ax1= plt.subplots()
+		ax1.pie(total_sales.values, labels=total_sales.index, autopct='%1.1f%%')
+		ax1.set_title('Sales by Category')
+		st.pyplot(fig1)
 
-	#average sales by category
-	average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
-	fig2, ax2= plt.subplots()
-	ax2.bar(average_sales['Category'], average_sales['Sales'])
-	ax2.set_xlabel('Category')
-	ax2.set_ylabel('Average Sales')
-	ax2.set_title('Average Sales by Category')
-	plt.xticks(rotation=45)
-	st.pyplot(fig2)
+	with col2:
+		#average sales by category
+		average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
+		fig2, ax2= plt.subplots()
+		ax2.bar(average_sales['Category'], average_sales['Sales'])
+		ax2.set_xlabel('Category')
+		ax2.set_ylabel('Average Sales')
+		ax2.set_title('Average Sales by Category')
+		plt.xticks(rotation=45)
+		st.pyplot(fig2)
 	
 	
 	generate_mails = st.button("Generate Communication", key = '1')
