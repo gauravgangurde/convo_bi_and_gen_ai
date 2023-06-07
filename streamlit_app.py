@@ -66,7 +66,7 @@ with tab1:
 with tab2:
 
 	df2 = pd.read_csv('report.csv')
-	col1, cole = st.columns(2)
+	col1, col2 = st.columns(2)
 	
 	with col1:
 		#pie chart for sales by category
