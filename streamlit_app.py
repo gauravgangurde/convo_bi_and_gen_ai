@@ -71,7 +71,6 @@ with tab2:
 	if st.button("Generate Categories"):
 		st.write('Four categories are generated:\n  1) Consistent Performer\n  2) Consistent Non-performer\n  3) Performer to Non-performer\n  4) Non-performer to Performer')
 		st.write('')
-		temp_var= 'jyhfkjug'
 		col1, col2 = st.columns(2)
 		with col1:
 			#pie chart for sales by category
@@ -92,13 +91,13 @@ with tab2:
 			st.pyplot(fig2)
 			
 	
-	if 'temp_var' in locals() or 'temp_var' in globals():
-		st.subheader('Personalization')
-		with st.form("select category"):
-			select_option = st.multiselect('Please select categories', df2['Category'].unique())
-			generate_mails = st.form_submit_button("Generate Communication")
-			if generate_mails:
-				st.write('Go to next tab to validate communication')
+
+	st.subheader('Personalization')
+	with st.form("select category"):
+		select_option = st.multiselect('Please select categories', df2['Category'].unique())
+		generate_mails = st.form_submit_button("Generate Communication")
+		if generate_mails:
+			st.write('Go to next tab to validate communication')
 
 with tab3:
 			
@@ -106,33 +105,33 @@ with tab3:
 	path = "data-mail.xlsx"
 	wb= openpyxl.load_workbook(path)
 	ws = wb.active
-
-	option = st.selectbox("Category", select_option)	
-	df3 = df2[df2['Category'] == option] #isin(select_option)]
-	name = st.selectbox('Please select agent to check outgoing communication',df3["Name"])
-	category = df2[df2.Name == name]['Category'].to_string(index=False)
-	target = df2[df2.Name == name]['Target'].to_string(index=False)
-	total_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
-	
-	if not name:
-		st.write("")
-	else:
-		with st.form("edit communication"):
-			#name_index = df2.loc[df2.Name == name].index[0] + 2
-			mail_index = 10
-			
-			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\ntotal Sales : ${total_sales}""")
-			st.write()
-			mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
-			
-			user_input = st.text_area("Edit communication",height = 600, value= mail_response)
-			# Every form must have a submit button
-			submitted3 = st.form_submit_button("Validate")
-			
-			if submitted3:
-				ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value = user_input
-				wb.save(path)
-				st.write("Message updated successfully")
-			
-				#st.markdown(ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
+	if select_option:
+		option = st.selectbox("Category", select_option)	
+		df3 = df2[df2['Category'] == option] #isin(select_option)]
+		name = st.selectbox('Please select agent to check outgoing communication',df3["Name"])
+		category = df2[df2.Name == name]['Category'].to_string(index=False)
+		target = df2[df2.Name == name]['Target'].to_string(index=False)
+		total_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
+		
+		if not name:
+			st.write("")
+		else:
+			with st.form("edit communication"):
+				#name_index = df2.loc[df2.Name == name].index[0] + 2
+				mail_index = 10
+				
+				st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\ntotal Sales : ${total_sales}""")
+				st.write()
+				mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
+				
+				user_input = st.text_area("Edit communication",height = 600, value= mail_response)
+				# Every form must have a submit button
+				submitted3 = st.form_submit_button("Validate")
+				
+				if submitted3:
+					ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value = user_input
+					wb.save(path)
+					st.write("Message updated successfully")
+				
+					#st.markdown(ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value)
 					
