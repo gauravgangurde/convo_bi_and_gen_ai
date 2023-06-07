@@ -68,30 +68,33 @@ with tab2:
 	df2 = pd.read_csv('report.csv')
 	
 	st.subheader('Categorisation')
-	if st.button("Generate Categories"):
-		st.write('Four categories are generated:\n  1) Consistent Performer\n  2) Consistent Non-performer\n  3) Performer to Non-performer\n  4) Non-performer to Performer')
-		st.write('')
-		col1, col2 = st.columns(2)
-		with col1:
-			#pie chart for sales by category
-			total_sales = df2.groupby('Category')['Sales'].sum()
-			fig1, ax1= plt.subplots()
-			ax1.pie(total_sales.values, labels=total_sales.index, autopct='%1.1f%%')
-			ax1.set_title('Sales by Category')
-			st.pyplot(fig1)
+	with st.form("category generation")
+		temp_var = 'jfsdhgsf'
+		 gen_categories= st.form_submit_button("Generate Categories")
+		if gen_categories:
+			st.write('Four categories are generated:\n  1) Consistent Performer\n  2) Consistent Non-performer\n  3) Performer to Non-performer\n  4) Non-performer to Performer')
+			st.write('')
+			col1, col2 = st.columns(2)
+			with col1:
+				#pie chart for sales by category
+				total_sales = df2.groupby('Category')['Sales'].sum()
+				fig1, ax1= plt.subplots()
+				ax1.pie(total_sales.values, labels=total_sales.index, autopct='%1.1f%%')
+				ax1.set_title('Sales by Category')
+				st.pyplot(fig1)
+			
+		
+			with col2:	
+				#average sales by category
+				average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
+				fig2, ax2= plt.subplots()
+				ax2.bar(average_sales['Category'], average_sales['Sales'])
+				ax2.set_title('Average Sales by Region')
+				plt.xticks(rotation=45)
+				st.pyplot(fig2)
+				
 		
 	
-		with col2:	
-			#average sales by category
-			average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
-			fig2, ax2= plt.subplots()
-			ax2.bar(average_sales['Category'], average_sales['Sales'])
-			ax2.set_title('Average Sales by Region')
-			plt.xticks(rotation=45)
-			st.pyplot(fig2)
-			
-	
-
 	st.subheader('Personalization')
 	with st.form("select category"):
 		select_option = st.multiselect('Please select applicable categories for processing', df2['Category'].unique())
