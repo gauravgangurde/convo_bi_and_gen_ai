@@ -103,23 +103,22 @@ with tab3:
 	ws = wb.active
 
 	option = st.selectbox("Category", select_option)	
-	with st.form("communication"):
-		df3 = df2[df2['Category'] == option] #isin(select_option)]
-		name = st.selectbox('Please select agent to check outgoing communication',df3["Name"])
-		category = df2[df2.Name == name]['Category'].to_string(index=False)
-		target = df2[df2.Name == name]['Target'].to_string(index=False)
-		curr_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
-		
-		# row and column index of required obs
-		#name_index = df2.loc[df2.Name == name].index[0] + 2
-		mail_index = 10
-		# Every form must have a submit button.
-		submitted2 = st.form_submit_button("Open message")
-		if submitted2:
-			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
-			st.write()
-			mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
-			st.markdown(mail_response)
+	df3 = df2[df2['Category'] == option] #isin(select_option)]
+	name = st.selectbox('Please select agent to check outgoing communication',df3["Name"])
+	category = df2[df2.Name == name]['Category'].to_string(index=False)
+	target = df2[df2.Name == name]['Target'].to_string(index=False)
+	curr_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
+	
+	# row and column index of required obs
+	#name_index = df2.loc[df2.Name == name].index[0] + 2
+	mail_index = 10
+	# Every form must have a submit button.
+	submitted2 = st.form_submit_button("Open message")
+	if submitted2:
+		st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
+		st.write()
+		mail_response = ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value
+		st.markdown(mail_response)
 			
 	#if "mail_response" in globals():
 	#	st.write('Please select name first')
