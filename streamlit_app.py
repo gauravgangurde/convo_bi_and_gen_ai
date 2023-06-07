@@ -81,8 +81,6 @@ with tab2:
 		average_sales = df2.groupby('Category')['Sales'].mean().reset_index()
 		fig2, ax2= plt.subplots()
 		ax2.bar(average_sales['Category'], average_sales['Sales'])
-		ax2.set_xlabel('Category')
-		ax2.set_ylabel('Average Sales')
 		ax2.set_title('Average Sales by Category')
 		plt.xticks(rotation=45)
 		st.pyplot(fig2)
