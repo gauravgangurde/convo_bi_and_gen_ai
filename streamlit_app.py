@@ -123,15 +123,16 @@ with tab3:
 		curr_sales = df2[df2.Name == name]['Sales'].to_string(index=False)
 		
 		# row and column index of required obs
-		name_index = (df2.loc[df2.Name == name].index[0] + 2)
+		#name_index = df2.loc[df2.Name == name].index[0] + 2
 		mail_index = 10
 		# Every form must have a submit button.
 		submitted2 = st.form_submit_button("Validate")
 		if submitted2:
 			st.text(f"""Name: {name}\nCategory : {category}\nTarget : ${target}\nCurrnt Sales : ${curr_sales}""")
 			st.write()
-			mail_response = ws.cell(row = name_index , column = mail_index).value
+			mail_response = ws.cell(row = df.loc[df.Name == name].index[0] + 2 , column = mail_index).value
 			st.markdown(mail_response)
+			
 	#if "mail_response" in globals():
 	#	st.write('Please select name first')
 	#else:
@@ -140,11 +141,11 @@ with tab3:
 			st.write('Please select name first')
 		else:
 			with st.form("edit communication"):
-				name_index = df2.loc[df2.Name == name].index[0] + 2
+				#name_index = df2.loc[df2.Name == name].index[0] + 2
 				mail_index = 10
-				user_input = st.text_area("Edit the mail",height = 600, value= ws.cell(row = name_index , column = mail_index).value)
+				user_input = st.text_area("Edit the mail",height = 600, value= ws.cell(row = df.loc[df.Name == name].index[0] + 2 , column = mail_index).value)
 				submitted3 = st.form_submit_button("Save")
 				if submitted3:
-					ws.cell(row = name_index , column = mail_index).value = user_input
+					ws.cell(row = df.loc[df.Name == name].index[0] + 2 , column = mail_index).value = user_input
 					wb.save('path') 
 					
