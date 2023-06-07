@@ -133,5 +133,5 @@ with tab3:
 	#	st.write('Please select name first')
 	#else:
 	if st.button('Edit', key = 'ABC'):
-		user_input = st.text_area("Edit the mail", value= mail_response)
+		user_input = st.text_area("Edit the mail", value= ws.cell(row = df.loc[df.Name == name].index[0] + 2, column = 10).value)
 			
