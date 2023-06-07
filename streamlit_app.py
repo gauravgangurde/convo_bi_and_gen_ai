@@ -94,13 +94,13 @@ with tab2:
 				st.pyplot(fig2)
 				
 		
-	
-	st.subheader('Personalization')
-	with st.form("select category"):
-		select_option = st.multiselect('Please select applicable categories for processing', df2['Category'].unique())
-		generate_mails = st.form_submit_button("Generate Communication")
-		if generate_mails:
-			st.write('Go to next tab to validate communication')
+	if temp_var:
+		st.subheader('Personalization')
+		with st.form("select category"):
+			select_option = st.multiselect('Please select applicable categories for processing', df2['Category'].unique())
+			generate_mails = st.form_submit_button("Generate Communication")
+			if generate_mails:
+				st.write('Go to next tab to validate communication')
 
 with tab3:
 			
