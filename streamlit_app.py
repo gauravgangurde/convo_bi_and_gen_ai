@@ -70,6 +70,8 @@ with tab2:
 	st.subheader('Categorisation')
 	if st.button("Generate Categories"):
 		st.write('Four categories are generated:\n  1) Consistent Performer\n  2) Consistent Non-performer\n  3) Performer to Non-performer\n  4) Non-performer to Performer')
+		st.write('')
+		temp_var= 'jyhfkjug'
 		col1, col2 = st.columns(2)
 		with col1:
 			#pie chart for sales by category
@@ -90,13 +92,13 @@ with tab2:
 			st.pyplot(fig2)
 			
 	
-	
-	st.subheader('Personalization')
-	with st.form("select category"):
-		select_option = st.multiselect('Please select categories', df2['Category'].unique())
-		generate_mails = st.form_submit_button("Generate Communication")
-		if generate_mails:
-			st.write('Go to next tab to validate communication')
+	if 'temp_var' in locals() or 'temp_var' in globals():
+		st.subheader('Personalization')
+		with st.form("select category"):
+			select_option = st.multiselect('Please select categories', df2['Category'].unique())
+			generate_mails = st.form_submit_button("Generate Communication")
+			if generate_mails:
+				st.write('Go to next tab to validate communication')
 
 with tab3:
 			
