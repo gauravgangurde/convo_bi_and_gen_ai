@@ -147,5 +147,5 @@ with tab3:
 				submitted3 = st.form_submit_button("Save")
 				if submitted3:
 					ws.cell(row = df2.loc[df2.Name == name].index[0] + 2 , column = mail_index).value = user_input
-					wb.save('path') 
+					wb.save(path) 
 					
