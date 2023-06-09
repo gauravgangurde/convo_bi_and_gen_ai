@@ -54,7 +54,7 @@ with tab1:
 				st.pyplot(fig)
 			else:
 				response1 = pandas_ai(df, prompt=query)
-				if isinstance(response, str):
+				if isinstance(response1, str):
 					st.text(response1)
 				elif isinstance(response1, pd.DataFrame):
 					st.dataframe(response1)
