@@ -37,8 +37,8 @@ with tab1:
 	pandas_ai = PandasAI(llm, conversational=False)#, enforce_privacy = True)
 
 	
-	st.header("Conversational BI")
-	st.subheader("Sample data structure ")
+	st.subheader("Conversational BI")
+	st.write("Sample data structure ")
 	st.dataframe(df.head())
 	
 	with st.form("conversation_bi"):
@@ -101,7 +101,7 @@ with tab2:
 
 with tab3:
 			
-	st.header("Personalized communication ")
+	st.subheader("Personalized communication ")
 	path = "data-mail.xlsx"
 	wb= openpyxl.load_workbook(path) #reading mail data file using openpyxl
 	ws = wb.active
