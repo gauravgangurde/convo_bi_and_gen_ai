@@ -19,7 +19,8 @@ with st.sidebar:
 	st.write('Ask any question on your data')
 
 #define tabs
-tab1, tab2, tab3 = st.tabs(['Analysis','Report', 'Validation'])
+#tab1, tab2, tab3 = st.tabs(['Analysis','Report', 'Validation'])
+tab1 = st.tabs(['Analysis'])
 
 ls = ['chart','plot','graph','trend', 'histogram']
 #to check if prompt have chart, graph words
