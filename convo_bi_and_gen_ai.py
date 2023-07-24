@@ -12,7 +12,7 @@ import openpyxl
 image = Image.open('exl.png')
 #read data file in dataframe
 #df = pd.read_csv('data.csv')
-df = pd.read_exel('Mort.xlsx')
+df = pd.read_excel('Mort.xlsx')
 
 with st.sidebar:
 	st.image(image, width = 150)
