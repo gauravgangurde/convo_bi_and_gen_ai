@@ -61,7 +61,7 @@ if st.button("Submit"):
 
 			workbook = Workbook()
 			sheet = workbook.active
-			for row in dataframe_to_rows(response1):
+			for row in dataframe_to_rows(response1, index=False):
 				sheet.append(row)
 			workbook.save('output.xlsx')
 			with open("output.xlsx", "rb") as file:
