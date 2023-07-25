@@ -6,13 +6,18 @@ from pandasai.llm.openai import OpenAI
 from PIL import Image
 import matplotlib.pyplot as plt
 import openai
-import openpyxl
+from openpyxl import Workbook
+from openpyxl.utils.dataframe import dataframe_to_rows
 
 #EXL logo
 image = Image.open('exl.png')
 #read data file in dataframe
 #df = pd.read_csv('data.csv')
 df = pd.read_excel('Mort.xlsx', header=2)
+
+workbook = Workbook()
+sheet = workbook.active
+
 
 with st.sidebar:
 	st.image(image, width = 150)
@@ -53,6 +58,15 @@ with st.form("conversation_bi"):
 			response1 = pandas_ai(df, prompt=query)
 			if isinstance(response1, pd.DataFrame):
 				st.dataframe(response1)
+				for row in dataframe_to_rows(response1, index=False):
+					sheet.append(row)
+				workbook.save('output.xlsx')
+				with open("output1.xlsx", "rb") as file:
+					st.download_button(
+						label="Download data",
+						data=file,
+						file_name='data.xlsx'
+					)
 			else:
 				st.text(response1)
 			
