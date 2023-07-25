@@ -13,7 +13,7 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 image = Image.open('exl.png')
 #read data file in dataframe
 #df = pd.read_csv('data.csv')
-df = pd.read_excel('Mort.xlsx', header=2)
+df = pd.read_excel('Mort_V1.xlsx', header=2)
 
 
 with st.sidebar:
