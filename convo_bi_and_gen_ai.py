@@ -74,11 +74,11 @@ if st.button("Submit"):
 			st.text(response1)
 		else:
 			#st.text(response1)
-			res1 = response1.to_frame().reset_index()
-			st.dataframe(res1)
+			response_df = response1.to_frame().reset_index()
+			st.dataframe(response_df)
 			workbook = Workbook()
 			sheet = workbook.active
-			for row in dataframe_to_rows(response1, index=False):
+			for row in dataframe_to_rows(response_df, index=False):
 				sheet.append(row)
 			workbook.save('output.xlsx')
 			with open("output.xlsx", "rb") as file:
