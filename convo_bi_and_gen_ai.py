@@ -61,7 +61,7 @@ with st.form("conversation_bi"):
 				for row in dataframe_to_rows(response1, index=False):
 					sheet.append(row)
 				workbook.save('output.xlsx')
-				with open("output1.xlsx", "rb") as file:
+				with open("output.xlsx", "rb") as file:
 					st.download_button(
 						label="Download data",
 						data=file,
