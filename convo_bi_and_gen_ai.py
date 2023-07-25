@@ -68,5 +68,7 @@ with st.form("conversation_bi"):
 						file_name='data.xlsx'
 					)
 			else:
-				st.text(response1)
+				#st.text(response1)
+				res1 = response1.to_frame().reset_index()
+				st.dataframe(res1)
 			
