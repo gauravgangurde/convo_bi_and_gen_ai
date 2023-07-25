@@ -43,34 +43,48 @@ st.subheader("Conversational BI")
 st.write("Sample data structure ")
 st.dataframe(df.head())
 
-with st.form("conversation_bi"):
+#with st.form("conversation_bi"):
 
-	query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
-	# Every form must have a submit button.
-	submitted1 = st.form_submit_button("Submit")
-	if submitted1:
-		#based on type of response
-		if contains_substring(query.lower(),ls): 
-			fig, x = plt.subplots()
-			response1 = pandas_ai(df, prompt=query)
-			st.pyplot(fig)
+query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
+# Every form must have a submit button.
+#submitted1 = st.form_submit_button("Submit")
+if st.button(submitted1):
+	#based on type of response
+	if contains_substring(query.lower(),ls): 
+		fig, x = plt.subplots()
+		response1 = pandas_ai(df, prompt=query)
+		st.pyplot(fig)
+	else:
+		response1 = pandas_ai(df, prompt=query)
+		if isinstance(response1, pd.DataFrame):
+			st.dataframe(response1)
+
+			workbook = Workbook()
+			sheet = workbook.active
+			for row in dataframe_to_rows(response1, index=False):
+				sheet.append(row)
+			workbook.save('output.xlsx')
+			with open("output.xlsx", "rb") as file:
+				st.download_button(
+					label="Download data",
+					data=file,
+					file_name='data.xlsx'
+				)
+		elif isinstane(response1, tuple):
+			st.text(response1)
 		else:
-			response1 = pandas_ai(df, prompt=query)
-			if isinstance(response1, pd.DataFrame):
-				st.dataframe(response1)
-				for row in dataframe_to_rows(response1, index=False):
-					sheet.append(row)
-				workbook.save('output.xlsx')
-				with open("output.xlsx", "rb") as file:
-					st.download_button(
-						label="Download data",
-						data=file,
-						file_name='data.xlsx'
-					)
-			elif isinstane(response1, tuple):
-				st.text(response1)
-			else:
-				#st.text(response1)
-				res1 = response1.to_frame().reset_index()
-				st.dataframe(res1)
-			
+			#st.text(response1)
+			res1 = response1.to_frame().reset_index()
+			st.dataframe(res1)
+			workbook = Workbook()
+			sheet = workbook.active
+			for row in dataframe_to_rows(response1, index=False):
+				sheet.append(row)
+			workbook.save('output.xlsx')
+			with open("output.xlsx", "rb") as file:
+				st.download_button(
+					label="Download data",
+					data=file,
+					file_name='data.xlsx'
+				)
+		
