@@ -70,7 +70,7 @@ if st.button(submitted1):
 					data=file,
 					file_name='data.xlsx'
 				)
-		elif isinstane(response1, tuple):
+		elif isinstance(response1, tuple):
 			st.text(response1)
 		else:
 			#st.text(response1)
