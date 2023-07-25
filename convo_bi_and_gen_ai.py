@@ -48,7 +48,7 @@ st.dataframe(df.head())
 query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 # Every form must have a submit button.
 #submitted1 = st.form_submit_button("Submit")
-if st.button(submitted1):
+if st.button("Submit"):
 	#based on type of response
 	if contains_substring(query.lower(),ls): 
 		fig, x = plt.subplots()
