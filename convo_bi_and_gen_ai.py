@@ -72,7 +72,7 @@ if st.button("Submit"):
 				)
 		elif isinstance(response1, tuple):
 			st.text(response1)
-		else:
+		elif isinstance(response1, pd.Series):
 			#st.text(response1)
 			response_df = response1.to_frame().reset_index()
 			st.dataframe(response_df)
@@ -87,4 +87,6 @@ if st.button("Submit"):
 					data=file,
 					file_name='data.xlsx'
 				)
+		else:
+			st.text(response1)
 		
