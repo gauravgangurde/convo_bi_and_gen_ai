@@ -44,7 +44,9 @@ st.dataframe(df.head())
 
 inp_query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 query = inp_query.lower().replace('mortality experience', 'percent of total actual death with respective total expected death')
-st.header(query)
+#st.subheader(query)
+
+
 #submitted1 = st.form_submit_button("Submit")
 if st.button("Submit"):
 	#based on type of response, check if user required graph/chart
