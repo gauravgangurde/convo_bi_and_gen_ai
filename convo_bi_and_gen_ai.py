@@ -15,9 +15,6 @@ image = Image.open('exl.png')
 #df = pd.read_csv('data.csv')
 df = pd.read_excel('Mort.xlsx', header=2)
 
-workbook = Workbook()
-sheet = workbook.active
-
 
 with st.sidebar:
 	st.image(image, width = 150)
@@ -46,22 +43,21 @@ st.dataframe(df.head())
 #with st.form("conversation_bi"):
 
 query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
-# Every form must have a submit button.
 #submitted1 = st.form_submit_button("Submit")
 if st.button("Submit"):
-	#based on type of response
+	#based on type of response, check if user required graph/chart
 	if contains_substring(query.lower(),ls): 
 		fig, x = plt.subplots()
 		response1 = pandas_ai(df, prompt=query)
 		st.pyplot(fig)
 	else:
 		response1 = pandas_ai(df, prompt=query)
+		#check if output is in dataframe and download option
 		if isinstance(response1, pd.DataFrame):
 			st.dataframe(response1)
-
 			workbook = Workbook()
 			sheet = workbook.active
-			for row in dataframe_to_rows(response1, index=False):
+			for row in dataframe_to_rows(response1):
 				sheet.append(row)
 			workbook.save('output.xlsx')
 			with open("output.xlsx", "rb") as file:
@@ -70,8 +66,10 @@ if st.button("Submit"):
 					data=file,
 					file_name='data.xlsx'
 				)
+		#check if output is in tuple
 		elif isinstance(response1, tuple):
 			st.text(response1)
+		#check if output is in series, convert it to dataframe and download option
 		elif isinstance(response1, pd.Series):
 			#st.text(response1)
 			response_df = response1.to_frame().reset_index()
@@ -87,6 +85,7 @@ if st.button("Submit"):
 					data=file,
 					file_name='data.xlsx'
 				)
+		#for all other output formats
 		else:
 			st.text(response1)
 		
