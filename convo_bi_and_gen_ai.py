@@ -67,6 +67,8 @@ with st.form("conversation_bi"):
 						data=file,
 						file_name='data.xlsx'
 					)
+			elif isinstane(response1, tuple):
+				st.text(response1)
 			else:
 				#st.text(response1)
 				res1 = response1.to_frame().reset_index()
