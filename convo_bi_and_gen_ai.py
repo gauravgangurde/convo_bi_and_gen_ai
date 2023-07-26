@@ -29,6 +29,20 @@ def contains_substring(string, substrings):
 			return True
 	return False
 
+def query_mapper(query):
+	if query.lower() = "show mortality experience analysis by product and duration":
+		return """Create a tabular report to show actual deaths divided by expected deaths as Mortality for each product and duration. Show Mortality in percentage format Product in rows and duration as columns. Add one row to show overall number for each column. Show all values in %"""
+	elif query.lower() = "show mortality experience analysis by product and smoker status":
+		return """Create a tabular report to show actual deaths divided by expected deaths as Mortality for each product and smoker status Show Mortality in percentage format. Product in rows and smoker status as columns. Add one row to show overall number for each column. Show all values in %"""
+	elif query.lower() = "show mortality experience analysis by sum assured class and product":
+		return """Create a tabular report to show actual deaths divided by expected deaths as Mortality for each "Sum Assured Class" and product. Show Mortality in percentage format. "Sum Assured Class" in rows and product as columns. Add one row to show overall number for each column. Show all values in %"""
+  	elif query.lower() = "Show mortality experience analysis by issue year":
+		return """Create a tabular report to show Actual Deaths, Expected Deaths, actual deaths divided by expected deaths as Mortality for each issue year. Show Mortality in percentage format and Issue year in YYYY format"""
+	elif query.lower() = "Show mortality experience analysis by UW Class":
+		return """Create a tabular report to show Actual Deaths, Expected Deaths, actual deaths divided by expected deaths as Mortality for each UW Class. Show Mortality in percentage format"""
+	else:
+		return query
+
 
 
 llm = OpenAI(api_token=st.secrets["chat_gpt_key"])
@@ -43,8 +57,9 @@ st.dataframe(df.head())
 #with st.form("conversation_bi"):
 
 inp_query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
-query = inp_query.lower().replace('mortality experience', 'percent of total actual death with respective total expected death')
-#st.subheader(query)
+#query = inp_query.lower().replace('mortality experience', 'percent of total actual death with respective total expected death')
+query = query_mapper(inp_query)
+st.subheader(query)
 
 
 #submitted1 = st.form_submit_button("Submit")
