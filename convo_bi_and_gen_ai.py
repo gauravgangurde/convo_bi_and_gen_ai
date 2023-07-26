@@ -36,7 +36,7 @@ def query_mapper(query):
 		return """Create a tabular report to show actual deaths divided by expected deaths as Mortality for each product and smoker status Show Mortality in percentage format. Product in rows and smoker status as columns. Add one row to show overall number for each column. Show all values in %"""
 	elif query.lower() == 'show mortality experience analysis by sum assured class and product':
 		return """Create a tabular report to show actual deaths divided by expected deaths as Mortality for each "Sum Assured Class" and product. Show Mortality in percentage format. "Sum Assured Class" in rows and product as columns. Add one row to show overall number for each column. Show all values in %"""
-  	elif query.lower() == 'Show mortality experience analysis by issue year':
+	elif query.lower() == 'Show mortality experience analysis by issue year':
 		return """Create a tabular report to show Actual Deaths, Expected Deaths, actual deaths divided by expected deaths as Mortality for each issue year. Show Mortality in percentage format and Issue year in YYYY format"""
 	elif query.lower() == 'Show mortality experience analysis by UW Class':
 		return """Create a tabular report to show Actual Deaths, Expected Deaths, actual deaths divided by expected deaths as Mortality for each UW Class. Show Mortality in percentage format"""
