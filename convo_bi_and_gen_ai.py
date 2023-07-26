@@ -59,7 +59,7 @@ st.dataframe(df.head())
 
 inp_query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 #query = inp_query.lower().replace('mortality experience', 'percent of total actual death with respective total expected death')
-query = query_mapper(inp_query)
+query = query_mapper(inp_query).replace('mortality experience', 'actual deaths divided by expected deaths in percent as Mortality')
 st.subheader(query)
 
 
