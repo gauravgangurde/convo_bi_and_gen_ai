@@ -152,8 +152,8 @@ if st.button("Submit"):
 		title = 'Mortality experience by Issue Year'
 		chart = 'y'
 		fig, ax = plt.subplots()
-		x = df_out['Issue Year']
-		y = df_out['Mortality']
+		x = pd.to_numeric(df_t['Issue_Year'].str.strip('%').replace('nan',0))
+		y = pd.to_numeric(df_t['Mortality'].str.strip('%').replace('nan',0))
 		plt.plot(x, y, marker='o', linestyle='-')
 		ax.set_xlabel('Year')
 		ax.set_ylabel('Mortality')
