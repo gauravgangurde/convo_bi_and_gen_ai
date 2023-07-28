@@ -107,7 +107,7 @@ if st.button("Submit"):
 		title = 'Mortality experience sum assured Class and Product'
 	elif query == 'show mortality experience analysis by issue year':
 		df_out = pivot2(df,'Issue Year')
-		df_out['Issue Year'] = pd.to_numeric(df_out['Issue Year'], errors='coerce').astype('Int64')
+		df_out['Issue Year'] = df_out['Issue Year'].astype(int)
 		title = 'Mortality experience by Issue Year'
 	elif query == 'show mortality experience analysis by uw class':
 		df_out = pivot2(df,'UW Class')
