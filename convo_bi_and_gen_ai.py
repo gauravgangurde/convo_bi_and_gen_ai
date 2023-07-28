@@ -94,16 +94,22 @@ if st.button("Submit"):
 	#Excel
 	workbook = Workbook()
 	sheet = workbook.active
-	graph = ii('exl.png')
-	aspect_ratio = graph.width / graph.height
-	graph.width = 200
-	graph.height = 200/aspect_ratio
-	sheet.add_image(graph, 'K3')
+
 	c1 = sheet.cell(row = 1, column = 1)
 	c1.value = title
 	for row in dataframe_to_rows(df_out, index = False):
 		sheet.append(row)
 	workbook.save('output.xlsx')
+
+		#formatting graph
+	graph = ii('exl.png')
+	aspect_ratio = graph.width / graph.height
+	graph.width = 800
+	graph.height = graph.width/aspect_ratio
+	#adding graph to sheet
+	sheet.add_image(graph)
+
+	
 	with open("output.xlsx", "rb") as file:
 		st.download_button(
 			label="Download Excel",
