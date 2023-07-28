@@ -208,11 +208,11 @@ if st.button("Submit"):
 			st.pyplot(fig2)
 			#formatting graph
 			graph2 = ii('Graph2.png')
-			aspect_ratio = graph2.width / graph2.height
+			aspect_ratio2 = graph2.width / graph2.height
 			graph2.width = 600
-			graph2.height = graph2.width/aspect_ratio
+			graph2.height = graph2.width/aspect_ratio2
 			#adding graph to sheet
-			sheet2.add_image(graph, 'L2')
+			sheet2.add_image(graph2, 'L2')
 
 	workbook.save('output.xlsx')
 
