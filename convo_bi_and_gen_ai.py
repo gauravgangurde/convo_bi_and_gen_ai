@@ -99,15 +99,16 @@ if st.button("Submit"):
 	c1.value = title
 	for row in dataframe_to_rows(df_out, index = False):
 		sheet.append(row)
-	workbook.save('output.xlsx')
 
-		#formatting graph
+	#formatting graph
 	graph = ii('exl.png')
 	aspect_ratio = graph.width / graph.height
 	graph.width = 800
 	graph.height = graph.width/aspect_ratio
 	#adding graph to sheet
 	sheet.add_image(graph)
+
+	workbook.save('output.xlsx')
 
 	
 	with open("output.xlsx", "rb") as file:
