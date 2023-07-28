@@ -81,7 +81,7 @@ if st.button("Submit"):
 		title = 'show mortality experience analysis by issue year'
 	elif query == 'show mortality experience analysis by uw class':
 		df_out = pivot1('Product', 'Duration')
-		title = = 'show mortality experience analysis by uw class'
+		title = 'show mortality experience analysis by uw class'
 
 	def df_to_pdf(df, output_file):
 		# Initialize PDF document
