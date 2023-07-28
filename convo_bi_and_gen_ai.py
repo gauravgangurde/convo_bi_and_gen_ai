@@ -174,35 +174,38 @@ if st.button("Submit"):
 
 	st.write(title)
 	st.dataframe(df_out)
-	st.pyplot(fig)
 
-	#Excel
-	workbook = Workbook()
-	sheet = workbook.active
-	sheet.title = 'Report'
-
-	c1 = sheet.cell(row = 1, column = 1)
-	c1.value = title
-	for row in dataframe_to_rows(df_out, index = False):
-		sheet.append(row)
-
-	#formatting graph
-	sheet2 = workbook.create_sheet(title='Graph')
-	graph = ii('Graph1.png')
-	aspect_ratio = graph.width / graph.height
-	graph.width = 600
-	graph.height = graph.width/aspect_ratio
-	#adding graph to sheet
-	sheet2.add_image(graph, 'B2')
-
-	workbook.save('output.xlsx')
-
+	col1, col2 = st.columns(2)
+	with col1:
+		st.pyplot(fig)
 	
-	with open("output.xlsx", "rb") as file:
-		st.download_button(
-			label="Download Excel",
-			data=file,
-			file_name='data.xlsx'
-		)
+		#Excel
+		workbook = Workbook()
+		sheet = workbook.active
+		sheet.title = 'Report'
+	
+		c1 = sheet.cell(row = 1, column = 1)
+		c1.value = title
+		for row in dataframe_to_rows(df_out, index = False):
+			sheet.append(row)
+	
+		#formatting graph
+		sheet2 = workbook.create_sheet(title='Graph')
+		graph = ii('Graph1.png')
+		aspect_ratio = graph.width / graph.height
+		graph.width = 600
+		graph.height = graph.width/aspect_ratio
+		#adding graph to sheet
+		sheet2.add_image(graph, 'B2')
+
+		workbook.save('output.xlsx')
+	
+		
+		with open("output.xlsx", "rb") as file:
+			st.download_button(
+				label="Download Excel",
+				data=file,
+				file_name='data.xlsx'
+			)
 
 		
