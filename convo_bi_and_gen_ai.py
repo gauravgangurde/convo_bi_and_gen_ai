@@ -24,8 +24,8 @@ with st.sidebar:
 pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], index="Product", columns = 'Duration', aggfunc='sum', margins=True, margins_name="Total")
 
 #Calculate the percentage of total actual deaths compared to total expected deaths 
-for i in range(13):
-	pivot_table['Percentage',i+1] = (pivot_table['Actual Deaths',i+1]/ pivot_table['Expected Deaths',i+1]* 100).round()#.astype(int)
+for i in df['Duration'].unique():
+	pivot_table['Percentage',i] = (pivot_table['Actual Deaths',i]/ pivot_table['Expected Deaths',i]* 100).round()#.astype(int)
 pivot_table['Percentage','Total'] = (pivot_table['Actual Deaths','Total']/ pivot_table['Expected Deaths','Total']* 100).round()#.astype(int)
 
 # Display the pivot table with both headers
