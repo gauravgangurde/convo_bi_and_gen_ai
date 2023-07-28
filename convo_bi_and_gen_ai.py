@@ -20,8 +20,8 @@ with st.sidebar:
 	st.image(image, width = 150)
 	st.write('Ask any question on your data')
 
-def calculate_ratio(x):
-	    return x['Actual Deaths'].sum() / x['Expected Deaths'].sum()
+def calculate_ratio(df):
+	    return df['Actual Deaths'].sum() / df['Expected Deaths'].sum()
 
 #Pivot the data and calculate the total actual and expected deaths for each product and duration 
 pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], index="Product", columns = 'Duration', aggfunc=calculate_ratio, margins=True, margins_name="Total")
