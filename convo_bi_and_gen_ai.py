@@ -27,7 +27,7 @@ pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], ind
 
 #Calculate the percentage of total actual deaths compared to total expected deaths 
 for i in range(13):
-	pivot_table['Percentage',i+1] = (pivot_table['Actual Deaths',i+1]/ pivot_table['Expected Deaths',i+1]* 100).round().astype(int)
+	pivot_table['Percentage',i+1] = (pivot_table['Actual Deaths',i+1]/ pivot_table['Expected Deaths',i+1]* 100).round()#.astype(int)
 pivot_table['Percentage','Total'] = (pivot_table['Actual Deaths','Total']/ pivot_table['Expected Deaths','Total']* 100).round()#.astype(int)
 
 # Display the pivot table with both headers
