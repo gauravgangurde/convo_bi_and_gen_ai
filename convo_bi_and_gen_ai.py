@@ -37,7 +37,7 @@ def pivot1(ind, col):
 #st.dataframe(pivot_table['Percentage'])
 st.dataframe(pivot1('Product', 'Duration'))
 st.dataframe(pivot1('Product', 'Smoker Status'))
-st.dataframe(pivot1('Product', 'Sum Assured Class'))
+st.dataframe(pivot1('Product', 'Sum Assured Class').reset_index(level=0, inplace=True))
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
