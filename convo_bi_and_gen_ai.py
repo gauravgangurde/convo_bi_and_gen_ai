@@ -150,6 +150,15 @@ if st.button("Submit"):
 		df_out = pivot2(df,'Issue Year')
 		df_out['Issue Year'] = df_out['Issue Year'].astype(str).str.replace(',', '')
 		title = 'Mortality experience by Issue Year'
+		chart = 'y'
+		# Extract x and y values from the DataFrame
+		x = df_out['Issue Year']
+		y = df['Mortality']
+		plt.plot(x, y, marker='o', linestyle='-')
+		plt.xlabel('Year')
+		plt.ylabel('Mortality')
+		plt.title('title')
+		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by uw class':
 		df_out = pivot2(df,'UW Class')
