@@ -27,16 +27,16 @@ pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], ind
 
 #Calculate the percentage of total actual deaths compared to total expected deaths 
 for i in range(13):
-	pivot_table['Percentage',i+1] = (pivot_table['Actual Deaths',i+1]/ pivot_table['Expected Deaths',i+1]* 100).round()#.astype(int)
+	pivot_table['Percentage',i+1] = (pivot_table['Actual Deaths',i+1]/ pivot_table['Expected Deaths',i+1]* 100).round().astype(int)
+pivot_table['Percentage','Total'] = (pivot_table['Actual Deaths','Total']/ pivot_table['Expected Deaths','Total']* 100).round()#.astype(int)
 
 # Display the pivot table with both headers
 
 #Add a title to the pivot table 
 #title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
 #pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
-pivot_table = pivot_table.rename_axis(index={'Total': 'Total Deaths'}, columns={'Total': 'Total Duration'})
 
-st.dataframe(pivot_table)
+st.dataframe(pivot_table['Percentage'])
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
