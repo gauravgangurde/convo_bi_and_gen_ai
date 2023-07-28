@@ -87,7 +87,7 @@ def df_to_pdf(df, output_file):
 
 # Usage example
 output_pdf_file = 'output_dataframe.pdf'
-df_to_pdf(pivot_table, output_pdf_file)
+df_to_pdf(pivot_table['Percentage'], output_pdf_file)
 
 
 with open("output_dataframe.pdf", "rb") as file:
