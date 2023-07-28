@@ -29,10 +29,10 @@ pivot_table['Percentage'] = (pivot_table['Actual Deaths']/ pivot_table['Expected
 # Display the pivot table with both headers
 
 #Add a title to the pivot table 
-title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
-pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
+#title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
+#pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
 
-st.dataframe(pivot_table_with_title)
+st.dataframe(pivot_table)
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
