@@ -65,8 +65,7 @@ if st.button("Submit"):
 		title = 'Mortality experience by Product and Duration'
 
 		df_t = df_out.set_index('Product/Duration').T.reset_index()
-		df_t['Endowment'] = pd.to_numeric(df_t['Endowment'].str.strip('%').replace('nan',0))
-		df_t['Term'] = pd.to_numeric(df_t['Term'].str.strip('%').replace('nan',0))
+		df_t['Total'] = pd.to_numeric(df_t['Total'].str.strip('%').replace('nan',0))
 		x_labels = df_t['Duration'].tolist()
 		
 		# Set the positions of the bars on the x-axis
@@ -74,18 +73,12 @@ if st.button("Submit"):
 		# Plot the bar graph for each value of Term and Endowment
 		fig, ax = plt.subplots()
 		bar_width = 0.35
-		for i, label in enumerate(['Endowment', 'Term']):
-			ax.bar([pos + bar_width * i for pos in x], df_t[label], bar_width, label=label)
+		plt.bar(x, df_t['Total'], width=bar_width)
 	
 		# Label the axes and add a title
 		ax.set_xlabel('Duration')
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
-		# Set the x-axis labels
-		ax.set_xticks([pos + bar_width / 2 for pos in x])
-		ax.set_xticklabels(x_labels)
-		# Show the legend
-		ax.legend()
 		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by product and smoker status':
