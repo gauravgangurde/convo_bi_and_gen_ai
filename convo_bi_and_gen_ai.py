@@ -68,7 +68,7 @@ if st.button("Submit"):
 		df_t = df_out.set_index('Product/Duration').T.reset_index()
 
 		# Define the labels for the x-axis
-		x_labels = df_t['index'].tolist()
+		x_labels = df_t['Product/Duration'].tolist()
 		
 		# Set the positions of the bars on the x-axis
 		x = range(len(x_labels))
@@ -98,7 +98,7 @@ if st.button("Submit"):
 		plt.tight_layout()
 		plt.show()
 
-		fig.savefig(option+'.png')
+		fig.savefig('Graph1.png')
 
 	elif query == 'show mortality experience analysis by product and smoker status':
 		df_out = pivot1(df,'Product', 'Smoker Status')
