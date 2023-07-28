@@ -98,12 +98,16 @@ with open("output_dataframe.pdf", "rb") as file:
 	)
 
 
-if st.button("Submit"):
-	with open("output.xlsx", "rb") as file:
-		st.download_button(
-			label="Download data",
-			data=file,
-			file_name='data.xlsx'
-		)
+workbook = Workbook()
+sheet = workbook.active
+for row in dataframe_to_rows(pivot_table['Percentage'], index=False):
+	sheet.append(row)
+workbook.save('output.xlsx')
+with open("output.xlsx", "rb") as file:
+	st.download_button(
+		label="Download Excel",
+		data=file,
+		file_name='data.xlsx'
+	)
 
 		
