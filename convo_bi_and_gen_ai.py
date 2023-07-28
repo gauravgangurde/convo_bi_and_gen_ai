@@ -118,7 +118,10 @@ if st.button("Submit"):
 			file_name='report.pdf'
 		)
 	
-	
+
+
+	st.dataframe(df_out)
+	df_out.reset_index(level=0, inplace=True)
 	workbook = Workbook()
 	sheet = workbook.active
 	c1 = sheet.cell(row = 1, column = 1)
