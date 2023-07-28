@@ -57,6 +57,7 @@ st.dataframe(df.head())
 
 inp_query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 query = inp_query.lower()
+chart = 'n'
 #st.subheader(query)
 
 if st.button("Submit"):
