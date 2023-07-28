@@ -85,7 +85,7 @@ if st.button("Submit"):
 		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title('Mortality experience by Product')
-		addlabels(x_labels, df_t['Total'])
+		addlabels(x_labels, df_t['Total']+0.005)
 		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by product and smoker status':
