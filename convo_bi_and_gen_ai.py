@@ -5,9 +5,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
-from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
-from reportlab.lib import colors
+from fpdf import FPDF
 
 #EXL logo
 image = Image.open('exl.png')
@@ -65,38 +63,32 @@ query = query_mapper(inp_query.lower())
 #st.subheader(query)
 
 def df_to_pdf(df, output_file):
-	# Convert DataFrame to a list of lists
-	data = [df.columns.tolist()] + df.values.tolist()
+	# Initialize PDF document
+	pdf = FPDF()
+	pdf.add_page()
 	
-	# Create a PDF document
-	doc = SimpleDocTemplate(output_file, pagesize=letter)
+	# Set font and font size
+	pdf.set_font("Arial", size=12)
 	
-	# Create a table from the DataFrame data
-	table = Table(data)
+	# Add table header
+	for column in df.columns:
+		pdf.cell(40, 10, str(column), 1)
+	pdf.ln()
 	
-	# Define table style
-	style = TableStyle([
-		('BACKGROUND', (0, 0), (-1, 0), colors.grey),  # Header background color
-		('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),  # Header text color
-		('ALIGN', (0, 0), (-1, -1), 'CENTER'),  # Center-align all cells
-		('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),  # Header font
-		('BOTTOMPADDING', (0, 0), (-1, 0), 12),  # Header bottom padding
-		('BACKGROUND', (0, 1), (-1, -1), colors.beige),  # Table body background color
-		('GRID', (0, 0), (-1, -1), 1, colors.black),  # Table grid color
-		('FONTSIZE', (0, 1), (-1, -1), 10),  # Table font size
-	])
+	# Add table data
+	for index, row in df.iterrows():
+		for value in row:
+			pdf.cell(40, 10, str(value), 1)
+		pdf.ln()
 	
-	# Apply the style to the table
-	table.setStyle(style)
-	
-	# Add table to the document
-	doc.build([table])
+	# Save PDF to the specified output file
+	pdf.output(output_file)
 
 
 # Usage example
 output_pdf_file = 'output_dataframe.pdf'
 df_to_pdf(pivot_table, output_pdf_file)
-print(f"DataFrame written to {output_pdf_file}.")
+
 
 with open("output_dataframe.pdf", "rb") as file:
 	st.download_button(
