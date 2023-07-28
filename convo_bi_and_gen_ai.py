@@ -20,8 +20,11 @@ with st.sidebar:
 	st.image(image, width = 150)
 	st.write('Ask any question on your data')
 
+def calculate_ratio(x):
+	    return x['Actual Deaths'].sum() / x['Expected Deaths'].sum()
+
 #Pivot the data and calculate the total actual and expected deaths for each product and duration 
-pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], index="Product", columns = 'Duration', aggfunc='sum', margins=True, margins_name="Total")
+pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], index="Product", columns = 'Duration', aggfunc=calculate_ratio, margins=True, margins_name="Total")
 
 #Calculate the percentage of total actual deaths compared to total expected deaths 
 #pivot_table['Percentage'] = (pivot_table['Actual Deaths']/ pivot_table['Expected Deaths']* 100).round()#.astype(int)
@@ -32,7 +35,7 @@ pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], ind
 title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
 pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
 
-st.text(pivot_table_with_title)
+st.dataframe(pivot_table_with_title)
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
