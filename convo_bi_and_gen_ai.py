@@ -121,7 +121,8 @@ if st.button("Submit"):
 	
 	workbook = Workbook()
 	sheet = workbook.active
-	sheet.append(title)
+	c1 = sheet.cell(row = 1, column = 1)
+	c1.value = title
 	for row in dataframe_to_rows(df_out):
 		sheet.append(row)
 	workbook.save('output.xlsx')
