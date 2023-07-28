@@ -66,6 +66,7 @@ if st.button("Submit"):
 		title = 'Mortality experience by Product and Duration'
 
 		df_t = df_out.set_index('Product/Duration').T.reset_index()
+		st.dataframe(df_t)
 
 		# Define the labels for the x-axis
 		x_labels = df_t['Product/Duration'].tolist()
