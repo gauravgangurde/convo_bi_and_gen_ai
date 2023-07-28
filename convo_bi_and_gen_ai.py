@@ -67,8 +67,8 @@ if st.button("Submit"):
 		title = 'Mortality experience by Product and Duration'
 		chart = 'y'
 		df_t = df_out.set_index('Product/Duration').T.reset_index()
-		df_t['Endowment'] = df_t['Endowment'].replace('nan%',NaN)
-		df_t['Term'] = df_t['Term'].replace('nan%',NaN)
+		df_t['Endowment'] = df_t['Endowment'].strip('%').replace('nan',0)
+		df_t['Term'] = df_t['Term'].strip('%').replace('nan',0)
 		x_labels = df_t['Duration'].tolist()
 		
 		# Set the positions of the bars on the x-axis
