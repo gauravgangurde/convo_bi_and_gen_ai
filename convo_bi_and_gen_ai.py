@@ -44,6 +44,7 @@ def pivot1(df,ind, col):
 def pivot2(df,col):
 	df1 = df.groupby(col)[['Actual Deaths','Expected Deaths']].sum()
 	df1['Mortality'] = (df1['Actual Deaths']/df1['Expected Deaths'] * 100).round().map('{:.0f}%'.format)
+	df1.reset_index(level=0, inplace=True)
 	return df1
 	
 
