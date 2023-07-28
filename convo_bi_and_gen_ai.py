@@ -35,7 +35,10 @@ def pivot1(df,ind, col):
 	#Add a title to the pivot table 
 	#title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
 	#pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
-	return pivot_table['Percentage']
+	df1 = pivot_table['Percentage']
+	df1.reset_index(level=0, inplace=True)
+	df1.columns.values[0] = ind + '/'+ col
+	return df1
 
 
 def pivot2(df,col):
@@ -91,7 +94,6 @@ if st.button("Submit"):
 
 	st.write(title)
 	st.dataframe(df_out)
-	df_out.reset_index(level=0, inplace=True)
 
 	#Excel
 	workbook = Workbook()
