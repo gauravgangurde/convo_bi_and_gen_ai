@@ -82,7 +82,7 @@ if st.button("Submit"):
 		# Label the axes and add a title
 		ax.set_xlabel('Duration')
 		ax.set_ylabel('Mortality')
-		ax.set_title('Mortality experience by Product and Duration')
+		ax.set_title(title)
 		# Set the x-axis labels
 		ax.set_xticks([pos + bar_width / 2 for pos in x])
 		ax.set_xticklabels(x_labels)
@@ -110,7 +110,7 @@ if st.button("Submit"):
 		# Label the axes and add a title
 		ax.set_xlabel('Smoker Status')
 		ax.set_ylabel('Mortality')
-		ax.set_title('Mortality experience by Product and Smoker Status')
+		ax.set_title(title)
 		# Set the x-axis labels
 		ax.set_xticks([pos + bar_width / 2 for pos in x])
 		ax.set_xticklabels(x_labels)
@@ -120,7 +120,7 @@ if st.button("Submit"):
 		
 	elif query == 'show mortality experience analysis by sum assured class and product':
 		df_out = pivot1(df,'Sum Assured Class', 'Product')
-		title = 'Mortality experience sum assured Class and Product'
+		title = 'Mortality experience by sum assured Class and Product'
 		chart = 'y'
 		#df_t = df_out.set_index('Sum Assured Class/Product').T.reset_index()
 		df_out['Endowment'] = pd.to_numeric(df_out['Endowment'].str.strip('%').replace('nan',0))
@@ -136,9 +136,9 @@ if st.button("Submit"):
 			ax.bar([pos + bar_width * i for pos in x], df_out[label], bar_width, label=label)
 	
 		# Label the axes and add a title
-		ax.set_xlabel('Smoker Status')
+		ax.set_xlabel('Sum Assured Class')
 		ax.set_ylabel('Mortality')
-		ax.set_title('Mortality experience sum assured Class and Product')
+		ax.set_title(title)
 		# Set the x-axis labels
 		ax.set_xticks([pos + bar_width / 2 for pos in x])
 		ax.set_xticklabels(x_labels)
