@@ -72,13 +72,13 @@ def df_to_pdf(df, output_file):
 	
 	# Add table header
 	for column in df.columns:
-		pdf.cell(40, 10, str(column), 1)
+		pdf.cell(200, 10, str(column), 1)
 	pdf.ln()
 	
 	# Add table data
 	for index, row in df.iterrows():
 		for value in row:
-			pdf.cell(40, 10, str(value), 1)
+			pdf.cell(200, 10, str(value), 1)
 		pdf.ln()
 	
 	# Save PDF to the specified output file
@@ -96,7 +96,8 @@ with open("output_dataframe.pdf", "rb") as file:
 		data=file,
 		file_name='report.pdf'
 	)
-#submitted1 = st.form_submit_button("Submit")
+
+
 if st.button("Submit"):
 	with open("output.xlsx", "rb") as file:
 		st.download_button(
