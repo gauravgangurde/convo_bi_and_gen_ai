@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from PIL import Image
+#from PIL import Image
 import matplotlib.pyplot as plt
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
@@ -10,7 +10,7 @@ from openpyxl.drawing.image import Image
 
 
 #EXL logo
-image = Image.open('exl.png')
+image = Image('exl.png')
 #read data file in dataframe
 #df = pd.read_csv('data.csv')
 df = pd.read_excel('Mort_V1.xlsx', header=2)
