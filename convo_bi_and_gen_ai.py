@@ -50,7 +50,7 @@ def pivot2(df,col):
 # function to add value labels
 def addlabels(x,y):
     for i in range(len(x)):
-        plt.text(i, y[i]+0.01, y[i], ha = 'center')
+        plt.text(i, y[i]+0.1, y[i], ha = 'center')
 
 st.subheader("Conversational BI")
 st.write("Sample data structure ")
@@ -128,6 +128,7 @@ if st.button("Submit"):
 		ax2.set_xticklabels(x_labels)
 		ax2.set_ylabel('Mortality Experience')
 		ax2.set_title('Mortality Experience by Product')
+		addlabels(x_labels, df_t['Total'])
 		fig2.savefig('Graph2.png')
 		
 	elif query == 'show mortality experience analysis by sum assured class and product':
@@ -150,6 +151,7 @@ if st.button("Submit"):
 		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title('Mortality Experience by Sum Assured Class')
+		addlabels(x_labels, df_t['Total'])
 		fig.savefig('Graph1.png')
 		
 		chart2 = 'y'
@@ -169,6 +171,7 @@ if st.button("Submit"):
 		ax2.set_xticklabels(x_labels)
 		ax2.set_ylabel('Mortality Experience')
 		ax2.set_title('Mortality Experience by Product')
+		addlabels(x_labels, df_t['Total'])
 		fig2.savefig('Graph2.png')
 		
 	elif query == 'show mortality experience analysis by issue year':
@@ -183,6 +186,7 @@ if st.button("Submit"):
 		ax.set_xlabel('Year')
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
+		addlabels(x,y)
 		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by uw class':
@@ -197,6 +201,7 @@ if st.button("Submit"):
 		ax.set_xlabel('UW Class')
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
+		addlabels(x,y)
 		fig.savefig('Graph1.png')
 
 	st.write(title)
