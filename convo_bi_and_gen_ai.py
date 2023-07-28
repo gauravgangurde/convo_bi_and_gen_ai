@@ -57,6 +57,7 @@ st.dataframe(df.head())
 
 inp_query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 query = inp_query.lower()
+chart2 = 'n'
 
 if st.button("Submit"):
 
@@ -80,7 +81,7 @@ if st.button("Submit"):
 		ax.set_xticks([pos for pos in x])
 		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
-		ax.set_title(title)
+		ax.set_title('Mortality experience by Product')
 		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by product and smoker status':
@@ -88,7 +89,7 @@ if st.button("Submit"):
 		title = 'Mortality experience by Product and Smoker Status'
 
 		df_t = df_out.set_index('Product/Smoker Status').T.reset_index()
-		df_t = df_t[df_t['Smoker Status'] != 'Total']
+		#df_t = df_t[df_t['Smoker Status'] != 'Total']
 		df_t['Total'] = pd.to_numeric(df_t['Total'].str.strip('%').replace('nan',0))
 		x_labels = df_t['Smoker Status'].tolist()
 
@@ -105,8 +106,30 @@ if st.button("Submit"):
 		ax.set_xticks([pos for pos in x])
 		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
-		ax.set_title(title)
+		ax.set_title('Mortality Experience by Smoker Status')
 		fig.savefig('Graph1.png')
+		
+		chart2 = 'y'
+
+		df_t = df_out.set_index('Product/Smoker Status').reset_index()
+		df_t['Total'] = pd.to_numeric(df_t['Total'].str.strip('%').replace('nan',0))
+		x_labels = df_t['Product/Smoker Status'].tolist()
+
+		
+		# Set the positions of the bars on the x-axis
+		x = range(len(x_labels))
+		# Plot the bar graph for each value of Term and Endowment
+		fig2, ax2 = plt.subplots()
+		bar_width = 0.35
+		plt.bar(x, df_t['Total'], width=bar_width)
+	
+		# Label the axes and add a title
+		ax2.set_xlabel('Product')
+		ax2.set_xticks([pos for pos in x])
+		ax2.set_xticklabels(x_labels)
+		ax2.set_ylabel('Mortality Experience')
+		ax2.set_title('Mortality Experience by Product')
+		fig.savefig('Graph2.png')
 		
 	elif query == 'show mortality experience analysis by sum assured class and product':
 		df_out = pivot1(df,'Sum Assured Class', 'Product')
@@ -186,15 +209,25 @@ if st.button("Submit"):
 		graph.height = graph.width/aspect_ratio
 		#adding graph to sheet
 		sheet2.add_image(graph, 'B2')
+	with col1:
+		if chart2 = 'y':
+			st.pyplot(fig2)
+			#formatting graph
+			graph2 = ii('Graph2.png')
+			aspect_ratio = graph2.width / graph2.height
+			graph2.width = 600
+			graph2.height = graph2.width/aspect_ratio
+			#adding graph to sheet
+			sheet2.add_image(graph, 'L2')
 
-		workbook.save('output.xlsx')
+	workbook.save('output.xlsx')
+
 	
-		
-		with open("output.xlsx", "rb") as file:
-			st.download_button(
-				label="Download Excel",
-				data=file,
-				file_name='data.xlsx'
-			)
+	with open("output.xlsx", "rb") as file:
+		st.download_button(
+			label="Download Excel",
+			data=file,
+			file_name='data.xlsx'
+		)
 
 		
