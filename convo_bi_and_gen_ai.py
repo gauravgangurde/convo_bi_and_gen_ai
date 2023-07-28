@@ -19,22 +19,23 @@ with st.sidebar:
 	st.write('Ask any question on your data')
 
 
-
-#Pivot the data and calculate the total actual and expected deaths for each product and duration 
-pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], index="Product", columns = 'Duration', aggfunc='sum', margins=True, margins_name="Total")
-
-#Calculate the percentage of total actual deaths compared to total expected deaths 
-for i in df['Duration'].unique():
-	pivot_table['Percentage',i] = (pivot_table['Actual Deaths',i]/ pivot_table['Expected Deaths',i]* 100).round()#.astype(int)
-pivot_table['Percentage','Total'] = (pivot_table['Actual Deaths','Total']/ pivot_table['Expected Deaths','Total']* 100).round()#.astype(int)
-
-# Display the pivot table with both headers
-
-#Add a title to the pivot table 
-#title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
-#pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
-
-st.dataframe(pivot_table['Percentage'])
+def pivot1(ind, col):
+	#Pivot the data and calculate the total actual and expected deaths for each product and duration 
+	pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], index=ind, columns = col, aggfunc='sum', margins=True, margins_name="Total")
+	
+	#Calculate the percentage of total actual deaths compared to total expected deaths 
+	for i in df[col].unique():
+		pivot_table['Percentage',i] = (pivot_table['Actual Deaths',i]/ pivot_table['Expected Deaths',i]* 100).round()#.astype(int)
+	pivot_table['Percentage','Total'] = (pivot_table['Actual Deaths','Total']/ pivot_table['Expected Deaths','Total']* 100).round()#.astype(int)
+	
+	# Display the pivot table with both headers
+	
+	#Add a title to the pivot table 
+	#title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
+	#pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
+	return pivot_table['Percentage']
+#st.dataframe(pivot_table['Percentage'])
+st.dataframe(pivot1('Product', 'Duration'))
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
