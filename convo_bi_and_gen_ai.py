@@ -94,7 +94,11 @@ if st.button("Submit"):
 	#Excel
 	workbook = Workbook()
 	sheet = workbook.active
-	sheet.add_image(ii('exl.png'), 'K3')
+	graph = ii('exl.png')
+	aspect_ratio = graph.width / graph.height
+	graph.width = 200
+	graph.height = 200/aspect_ratio
+	sheet.add_image(graph, 'K3')
 	c1 = sheet.cell(row = 1, column = 1)
 	c1.value = title
 	for row in dataframe_to_rows(df_out, index = False):
