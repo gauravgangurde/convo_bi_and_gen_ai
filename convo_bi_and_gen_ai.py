@@ -25,8 +25,8 @@ def pivot1(ind, col):
 	
 	#Calculate the percentage of total actual deaths compared to total expected deaths 
 	for i in df[col].unique():
-		pivot_table['Percentage',i] = (pivot_table['Actual Deaths',i]/ pivot_table['Expected Deaths',i]* 100).round()#.astype(int)
-	pivot_table['Percentage','Total'] = (pivot_table['Actual Deaths','Total']/ pivot_table['Expected Deaths','Total']* 100).round()#.astype(int)
+		pivot_table['Percentage',i] = (pivot_table['Actual Deaths',i]/ pivot_table['Expected Deaths',i]* 100).round().map('{:.2f}%'.format)
+	pivot_table['Percentage','Total'] = (pivot_table['Actual Deaths','Total']/ pivot_table['Expected Deaths','Total']* 100).round().map('{:.2f}%'.format)
 	
 	# Display the pivot table with both headers
 	
