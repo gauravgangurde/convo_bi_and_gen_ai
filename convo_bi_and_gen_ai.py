@@ -98,7 +98,7 @@ if st.button("Submit"):
 		x = range(len(x_labels))
 		# Plot the bar graph for each value of Term and Endowment
 		fig, ax = plt.subplots()
-		bar_width = 0.5
+		bar_width = 0.35
 		plt.bar(x, df_t['Total'], width=bar_width)
 	
 		# Label the axes and add a title
