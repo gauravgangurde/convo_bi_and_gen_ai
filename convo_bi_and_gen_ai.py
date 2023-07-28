@@ -214,7 +214,7 @@ if st.button("Submit"):
 			#adding graph to sheet
 			sheet2.add_image(graph2, 'L2')
 
-	workbook.save('output.xlsx')
+		workbook.save('output.xlsx')
 
 	
 	with open("output.xlsx", "rb") as file:
