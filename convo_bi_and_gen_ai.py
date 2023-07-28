@@ -78,7 +78,7 @@ if st.button("Submit"):
 	
 		# Label the axes and add a title
 		ax.set_xlabel('Duration')
-  		ax.set_xticklabels(x_labels)
+		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
 		fig.savefig('Graph1.png')
