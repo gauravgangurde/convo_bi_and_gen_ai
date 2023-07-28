@@ -125,7 +125,7 @@ if st.button("Submit"):
 		#df_t = df_out.set_index('Sum Assured Class/Product').T.reset_index()
 		df_out['Endowment'] = pd.to_numeric(df_out['Endowment'].str.strip('%').replace('nan',0))
 		df_out['Term'] = pd.to_numeric(df_out['Term'].str.strip('%').replace('nan',0))
-		x_labels = df_out['Smoker Status'].tolist()
+		x_labels = df_out['Sum Assured Class/Product'].tolist()
 		
 		# Set the positions of the bars on the x-axis
 		x = range(len(x_labels))
