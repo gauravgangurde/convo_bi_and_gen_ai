@@ -93,12 +93,12 @@ if st.button("Submit"):
 
 	#Excel
 	workbook = Workbook()
-	sheet = workbook.active
+	report = workbook.active
 
-	c1 = sheet.cell(row = 1, column = 1)
+	c1 = report.cell(row = 1, column = 1)
 	c1.value = title
 	for row in dataframe_to_rows(df_out, index = False):
-		sheet.append(row)
+		report.append(row)
 
 	#formatting graph
 	sheet2 = workbook.create_sheet(title='Graph')
@@ -107,7 +107,7 @@ if st.button("Submit"):
 	graph.width = 800
 	graph.height = graph.width/aspect_ratio
 	#adding graph to sheet
-	sheet2.add_image(graph)
+	sheet2.add_image(graph, 'B2')
 
 	workbook.save('output.xlsx')
 
