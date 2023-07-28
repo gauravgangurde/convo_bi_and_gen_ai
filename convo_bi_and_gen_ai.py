@@ -151,13 +151,13 @@ if st.button("Submit"):
 		df_out['Issue Year'] = df_out['Issue Year'].astype(str).str.replace(',', '')
 		title = 'Mortality experience by Issue Year'
 		chart = 'y'
-		# Extract x and y values from the DataFrame
+		fig, ax = plt.subplots()
 		x = df_out['Issue Year']
 		y = df_out['Mortality']
 		plt.plot(x, y, marker='o', linestyle='-')
-		plt.xlabel('Year')
-		plt.ylabel('Mortality')
-		plt.title('title')
+		ax.set_xlabel('Year')
+		ax.set_ylabel('Mortality')
+		ax.set_title('title')
 		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by uw class':
