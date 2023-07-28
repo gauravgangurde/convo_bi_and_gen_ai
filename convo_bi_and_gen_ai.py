@@ -107,7 +107,8 @@ if st.button("Submit"):
 		title = 'Mortality experience sum assured Class and Product'
 	elif query == 'show mortality experience analysis by issue year':
 		df_out = pivot2(df,'Issue Year')
-		df_out['Issue Year'] = df_out['Issue Year'].str.replace(',', '').astype(int)
+		df_out['Issue Year'] = df_out['Issue Year'].astype(int)
+		st.text(df_out['Issue Year'])
 		title = 'Mortality experience by Issue Year'
 	elif query == 'show mortality experience analysis by uw class':
 		df_out = pivot2(df,'UW Class')
