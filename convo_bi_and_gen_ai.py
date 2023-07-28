@@ -165,7 +165,8 @@ if st.button("Submit"):
 		fig, ax = plt.subplots()
 		x = df_out['UW Class']
 		y = pd.to_numeric(df_out['Mortality'].str.strip('%').replace('nan',0))
-		plt.bar(x, y)
+		bar_width = 0.35
+		plt.bar(x, y, width=bar_width)
 		ax.set_xlabel('UW Class')
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
