@@ -65,7 +65,7 @@ if st.button("Submit"):
 		df_out = pivot1(df,'Product', 'Duration')
 		title = 'Mortality experience by Product and Duration'
 		fig, x= plt.subplots()
-		df_t = df_out.T
+		df_t = df_out.set_index('Product/Duration').T.reset_index()
 		st.dataframe(df_t)
 
 	elif query == 'show mortality experience analysis by product and smoker status':
