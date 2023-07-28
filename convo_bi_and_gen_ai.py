@@ -130,7 +130,7 @@ if st.button("Submit"):
 
 	#formatting graph
 	sheet2 = workbook.create_sheet(title='Graph')
-	graph = ii('graph1.png')
+	graph = ii('Graph1.png')
 	aspect_ratio = graph.width / graph.height
 	graph.width = 800
 	graph.height = graph.width/aspect_ratio
