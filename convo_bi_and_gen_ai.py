@@ -78,9 +78,9 @@ if st.button("Submit"):
 	elif query == 'show mortality experience analysis by Product and Smoker Status':
 		df_out = pivot1(df,'Product', 'Smoker Status')
 		title = 'Mortality experience by product and smoker status'
-	elif query == 'Mortality experience sum assured Class and Product':
+	elif query == 'show mortality experience analysis by sum assured class and product':
 		df_out = pivot1(df,'Sum Assured Class', 'Product')
-		title = 'show mortality experience analysis by sum assured class and product'
+		title = 'Mortality experience sum assured Class and Product'
 	elif query == 'show mortality experience analysis by issue year':
 		df_out = pivot2(df,'Issue Year')
 		title = 'Mortality experience by Issue Year'
@@ -88,7 +88,7 @@ if st.button("Submit"):
 		df_out = pivot2(df,'UW Class')
 		title = 'Mortality experience by UW Class'
 
-	#st.text(title)
+	st.write(title)
 	st.dataframe(df_out)
 	df_out.reset_index(level=0, inplace=True)
 
