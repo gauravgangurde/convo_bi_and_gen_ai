@@ -86,7 +86,7 @@ if st.button("Submit"):
 	st.dataframe(df_out)
 	df_out.reset_index(level=0, inplace=True)
 
-	
+	#PDF
 	def df_to_pdf(df, output_file):
 		# Initialize PDF document
 		pdf = FPDF()
@@ -97,13 +97,13 @@ if st.button("Submit"):
 		
 		# Add table header
 		for column in df.columns:
-			pdf.cell(200, 10, str(column), 1)
+			pdf.cell(20, 10, str(column), 1)
 		pdf.ln()
 		
 		# Add table data
 		for index, row in df.iterrows():
 			for value in row:
-				pdf.cell(200, 10, str(value), 1)
+				pdf.cell(20, 10, str(value), 1)
 			pdf.ln()
 		
 		# Save PDF to the specified output file
@@ -123,9 +123,7 @@ if st.button("Submit"):
 		)
 	
 
-
-	st.dataframe(df_out)
-	df_out.reset_index(level=0, inplace=True)
+	#Excel
 	workbook = Workbook()
 	sheet = workbook.active
 	c1 = sheet.cell(row = 1, column = 1)
