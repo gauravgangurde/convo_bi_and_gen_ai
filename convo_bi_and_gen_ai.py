@@ -36,12 +36,13 @@ def pivot1(df,ind, col):
 	#title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
 	#pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
 	return pivot_table['Percentage']
-#st.dataframe(pivot_table['Percentage'])
-#st.dataframe(pivot1('Product', 'Duration'))
-#st.dataframe(pivot1('Product', 'Smoker Status'))
-#st.dataframe(pivot1('Product', 'Sum Assured Class'))
 
-#def pivot2(df,col):
+
+def pivot2(df,col):
+	df1 = df.groupby(col)[['Actual Deaths','Expected Deaths']].sum()
+	df1['Mortality'] = (df1['Actual Deaths']/df1['Expected Deaths'] * 100).round().map('{:.0f}%'.format)
+	return df1
+	
 	
 
 def query_mapper(query):
