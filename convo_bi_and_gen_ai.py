@@ -50,7 +50,7 @@ def pivot2(df,col):
 # function to add value labels
 def addlabels(x,y):
     for i in range(len(x)):
-        plt.text(i, y[i]+0.1, y[i], ha = 'center')
+        plt.text(i, y[i]+0.1, str(y[i])+'%', ha = 'center')
 
 st.subheader("Conversational BI")
 st.write("Sample data structure ")
