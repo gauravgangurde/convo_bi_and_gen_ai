@@ -78,6 +78,7 @@ if st.button("Submit"):
 	
 		# Label the axes and add a title
 		ax.set_xlabel('Duration')
+		ax.set_xticks([pos + bar_width / 2 for pos in x])
 		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
