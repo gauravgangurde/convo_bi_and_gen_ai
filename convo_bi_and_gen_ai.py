@@ -173,7 +173,8 @@ if st.button("Submit"):
 		fig.savefig('Graph1.png')
 
 	st.write(title)
-	st.dataframe(df_out,)
+	st.dataframe(df_out)
+	st.pyplot(fig)
 
 	#Excel
 	workbook = Workbook()
