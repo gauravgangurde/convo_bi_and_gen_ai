@@ -106,3 +106,5 @@ wcwidth
 Werkzeug
 yarl
 zipp
+reportlab
+fpdf
