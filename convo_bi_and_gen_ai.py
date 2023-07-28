@@ -112,15 +112,15 @@ if st.button("Submit"):
 		fig.savefig('Graph1.png')
 		
 		chart2 = 'y'
-		df_t = df_out.set_index('Product/Smoker Status').reset_index()
-		df_t['Total'] = pd.to_numeric(df_t['Total'].str.strip('%').replace('nan',0))
-		x_labels = df_t['Product/Smoker Status'].tolist()
+		df_t2 = df_out.set_index('Product/Smoker Status').reset_index()
+		df_t2['Total'] = pd.to_numeric(df_t2['Total'].str.strip('%').replace('nan',0))
+		x_labels = df_t2['Product/Smoker Status'].tolist()
 		# Set the positions of the bars on the x-axis
 		x = range(len(x_labels))
 		# Plot the bar graph for each value of Term and Endowment
 		fig2, ax2 = plt.subplots()
 		bar_width = 0.35
-		plt.bar(x, df_t['Total'], width=bar_width)
+		plt.bar(x, df_t2['Total'], width=bar_width)
 	
 		# Label the axes and add a title
 		ax2.set_xlabel('Product')
@@ -128,7 +128,7 @@ if st.button("Submit"):
 		ax2.set_xticklabels(x_labels)
 		ax2.set_ylabel('Mortality Experience')
 		ax2.set_title('Mortality Experience by Product')
-		addlabels(x_labels, df_t['Total'])
+		addlabels(x_labels, df_t2['Total'])
 		fig2.savefig('Graph2.png')
 		
 	elif query == 'show mortality experience analysis by sum assured class and product':
@@ -171,7 +171,7 @@ if st.button("Submit"):
 		ax2.set_xticklabels(x_labels)
 		ax2.set_ylabel('Mortality Experience')
 		ax2.set_title('Mortality Experience by Product')
-		addlabels(x_labels, df_t['Total'])
+		addlabels(x_labels, df_t2['Total'])
 		fig2.savefig('Graph2.png')
 		
 	elif query == 'show mortality experience analysis by issue year':
