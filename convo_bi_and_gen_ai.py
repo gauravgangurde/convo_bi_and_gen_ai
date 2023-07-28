@@ -67,8 +67,8 @@ if st.button("Submit"):
 		title = 'Mortality experience by Product and Duration'
 		chart = 'y'
 		df_t = df_out.set_index('Product/Duration').T.reset_index()
-		df_t['Endowment'] = df_t['Endowment'].map('{:.0f}'.format)
-		df_t['Term'] = df_t['Term'].map('{:.0f}'.format)
+		df_t['Endowment'] = df_t['Endowment'].replace('nan%','')
+		df_t['Term'] = df_t['Term'].replace('nan%','')
 		st.dataframe(df_t)
 	elif query == 'show mortality experience analysis by product and smoker status':
 		df_out = pivot1(df,'Product', 'Smoker Status')
