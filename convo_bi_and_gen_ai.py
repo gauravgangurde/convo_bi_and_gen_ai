@@ -157,7 +157,7 @@ if st.button("Submit"):
 		plt.plot(x, y, marker='o', linestyle='-')
 		ax.set_xlabel('Year')
 		ax.set_ylabel('Mortality')
-		ax.set_title('title')
+		ax.set_title(title)
 		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by uw class':
