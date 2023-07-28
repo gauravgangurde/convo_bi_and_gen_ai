@@ -85,9 +85,6 @@ if st.button("Submit"):
 		ax.set_ylabel('Mortality')
 		ax.set_title('Endowment and Term Percentage')
 		
-		# Set the y-axis limit to match the percentage values (0 to 100)
-		ax.set_ylim(0, 100)
-		
 		# Set the x-axis labels
 		ax.set_xticks([pos + bar_width / 2 for pos in x])
 		ax.set_xticklabels(x_labels)
@@ -95,8 +92,6 @@ if st.button("Submit"):
 		# Show the legend
 		ax.legend()
 		
-		# Show the plot
-		plt.tight_layout()
 		plt.show()
 
 		fig.savefig('Graph1.png')
