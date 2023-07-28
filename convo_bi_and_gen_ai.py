@@ -122,7 +122,7 @@ if st.button("Submit"):
 		df_out = pivot1(df,'Sum Assured Class', 'Product')
 		title = 'Mortality experience by sum assured Class and Product'
 		chart = 'y'
-		df_t = df_out#.set_index('Sum Assured Class/Product').T.reset_index()
+		df_t = df_out.set_index('Sum Assured Class/Product').reset_index()
 		df_t['Endowment'] = pd.to_numeric(df_t['Endowment'].str.strip('%').replace('nan',0))
 		df_t['Term'] = pd.to_numeric(df_t['Term'].str.strip('%').replace('nan',0))
 		x_labels = df_out['Sum Assured Class/Product'].tolist()
