@@ -47,7 +47,10 @@ def pivot2(df,col):
 	df1.reset_index(level=0, inplace=True)
 	return df1
 	
-
+# function to add value labels
+def addlabels(x,y):
+    for i in range(len(x)):
+        plt.text(i, y[i], y[i], ha = 'center')
 
 st.subheader("Conversational BI")
 st.write("Sample data structure ")
@@ -82,6 +85,7 @@ if st.button("Submit"):
 		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title('Mortality experience by Product')
+		addlabels(x_labels, df_t['Total'])
 		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by product and smoker status':
@@ -104,6 +108,7 @@ if st.button("Submit"):
 		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title('Mortality Experience by Smoker Status')
+		addlabels(x_labels, df_t['Total'])
 		fig.savefig('Graph1.png')
 		
 		chart2 = 'y'
