@@ -69,7 +69,7 @@ if st.button("Submit"):
 		st.dataframe(df_t)
 
 		# Define the labels for the x-axis
-		x_labels = df_t['Product/Duration'].tolist()
+		x_labels = df_t['Duration'].tolist()
 		
 		# Set the positions of the bars on the x-axis
 		x = range(len(x_labels))
