@@ -73,26 +73,26 @@ if st.button("Submit"):
 		
 		# Set the positions of the bars on the x-axis
 		x = range(len(x_labels))
+
+		# Set the width of the bars
+		width = 0.35
 		
-		# Plot the bar graph for each value of Term and Endowment
+		# Create the figure and axes
 		fig, ax = plt.subplots()
-		bar_width = 0.25
-		for i, label in enumerate(['Endowment', 'Term']):
-			ax.bar([pos + bar_width * i for pos in x], df_t[label], bar_width, label=label)
-	
-		# Label the axes and add a title
-		ax.set_xlabel('Duration')
-		ax.set_ylabel('Mortality')
-		ax.set_title('Endowment and Term Percentage')
 		
-		# Set the x-axis labels
-		ax.set_xticks([pos + bar_width / 2 for pos in x])
-		ax.set_xticklabels(x_labels)
+		# Plot the first set of data as bars
+		rects1 = ax.bar(x - width/2, df_t['Endowment'], width, label=labels[0])
 		
-		# Show the legend
+		# Plot the second set of data as bars
+		rects2 = ax.bar(x + width/2, df_t['Term1'], width, label=labels[1])
+		
+		# Add labels, title, and legend
+		ax.set_ylabel('Values')
+		ax.set_xlabel('Categories')
+		ax.set_title(title)
+		ax.set_xticks(x)
+		ax.set_xticklabels(categories)
 		ax.legend()
-		
-		plt.show()
 
 		fig.savefig('Graph1.png')
 
