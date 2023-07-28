@@ -153,7 +153,7 @@ if st.button("Submit"):
 		chart = 'y'
 		# Extract x and y values from the DataFrame
 		x = df_out['Issue Year']
-		y = df['Mortality']
+		y = df_out['Mortality']
 		plt.plot(x, y, marker='o', linestyle='-')
 		plt.xlabel('Year')
 		plt.ylabel('Mortality')
