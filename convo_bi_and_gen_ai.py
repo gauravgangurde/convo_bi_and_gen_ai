@@ -209,8 +209,8 @@ if st.button("Submit"):
 		graph.height = graph.width/aspect_ratio
 		#adding graph to sheet
 		sheet2.add_image(graph, 'B2')
-	with col1:
-		if chart2 = 'y':
+	with col2:
+		if chart2 == 'y':
 			st.pyplot(fig2)
 			#formatting graph
 			graph2 = ii('Graph2.png')
