@@ -20,14 +20,19 @@ with st.sidebar:
 	st.image(image, width = 150)
 	st.write('Ask any question on your data')
 
+#Pivot the data and calculate the total actual and expected deaths for each product and duration 
+pivot_table = pd.pivot_table(df, values=['Actual Deaths', 'Expected Deaths'], index="Product", columns = 'Duration', aggfunc='sum', margins=True, margins_name="Total")
 
-ls = ['chart','plot','graph','trend', 'histogram']
-#to check if prompt have chart, graph words
-def contains_substring(string, substrings):
-	for substring in substrings:
-		if substring in string:
-			return True
-	return False
+#Calculate the percentage of total actual deaths compared to total expected deaths 
+pivot_table['Percentage'] = (pivot_table['Actual Deaths']/ pivot_table['Expected Deaths']* 100).round().astype(int)
+
+# Display the pivot table with both headers
+
+#Add a title to the pivot table 
+title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
+pivot_table_with_title = pd.concat([pd.DataFrame([title], columns={"}}, pivot+table), axis=0)
+
+st.dataframe(pivot_table_with_title)
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
