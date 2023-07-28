@@ -100,7 +100,7 @@ with open("output_dataframe.pdf", "rb") as file:
 
 workbook = Workbook()
 sheet = workbook.active
-for row in dataframe_to_rows(pivot_table['Percentage'], index=False):
+for row in dataframe_to_rows(pivot_table, index=False):
 	sheet.append(row)
 workbook.save('output.xlsx')
 with open("output.xlsx", "rb") as file:
