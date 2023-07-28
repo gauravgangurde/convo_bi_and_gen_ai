@@ -186,7 +186,6 @@ if st.button("Submit"):
 		ax.set_xlabel('Year')
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
-		addlabels(x,y)
 		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by uw class':
