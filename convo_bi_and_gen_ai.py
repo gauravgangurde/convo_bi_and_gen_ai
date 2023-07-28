@@ -64,48 +64,21 @@ if st.button("Submit"):
 	if query == 'show mortality experience analysis by product and duration':
 		df_out = pivot1(df,'Product', 'Duration')
 		title = 'Mortality experience by Product and Duration'
-
-		df_t = df_out.set_index('Product/Duration').T.reset_index()
-		st.dataframe(df_t)
-
-		# Define the labels for the x-axis
-		x_labels = df_t['Duration'].tolist()
-		
-		# Set the positions of the bars on the x-axis
-		x = range(len(x_labels))
-
-		# Set the width of the bars
-		width = 0.35
-		
-		# Create the figure and axes
-		fig, ax = plt.subplots()
-		
-		# Plot the first set of data as bars
-		rects1 = ax.bar(x - width/2, df_t['Endowment'], width, label=labels[0])
-		
-		# Plot the second set of data as bars
-		rects2 = ax.bar(x + width/2, df_t['Term1'], width, label=labels[1])
-		
-		# Add labels, title, and legend
-		ax.set_ylabel('Values')
-		ax.set_xlabel('Categories')
-		ax.set_title(title)
-		ax.set_xticks(x)
-		ax.set_xticklabels(categories)
-		ax.legend()
-
-		fig.savefig('Graph1.png')
+		chart = 'y'
 
 	elif query == 'show mortality experience analysis by product and smoker status':
 		df_out = pivot1(df,'Product', 'Smoker Status')
 		title = 'Mortality experience by Product and Smoker Status'
+		
 	elif query == 'show mortality experience analysis by sum assured class and product':
 		df_out = pivot1(df,'Sum Assured Class', 'Product')
 		title = 'Mortality experience sum assured Class and Product'
+		
 	elif query == 'show mortality experience analysis by issue year':
 		df_out = pivot2(df,'Issue Year')
 		df_out['Issue Year'] = df_out['Issue Year'].astype(str).str.replace(',', '')
 		title = 'Mortality experience by Issue Year'
+		
 	elif query == 'show mortality experience analysis by uw class':
 		df_out = pivot2(df,'UW Class')
 		title = 'Mortality experience by UW Class'
@@ -124,13 +97,14 @@ if st.button("Submit"):
 		sheet.append(row)
 
 	#formatting graph
-	sheet2 = workbook.create_sheet(title='Graph')
-	graph = ii('Graph1.png')
-	aspect_ratio = graph.width / graph.height
-	graph.width = 800
-	graph.height = graph.width/aspect_ratio
-	#adding graph to sheet
-	sheet2.add_image(graph, 'B2')
+	if chart == 'y':
+		sheet2 = workbook.create_sheet(title='Graph')
+		graph = ii('Graph1.png')
+		aspect_ratio = graph.width / graph.height
+		graph.width = 600
+		graph.height = graph.width/aspect_ratio
+		#adding graph to sheet
+		sheet2.add_image(graph, 'B2')
 
 	workbook.save('output.xlsx')
 
