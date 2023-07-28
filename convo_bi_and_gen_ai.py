@@ -64,10 +64,9 @@ if st.button("Submit"):
 		df_out = pivot1(df,'Product', 'Duration')
 		title = 'Mortality experience by Product and Duration'
 
-		df_t = df_out.set_index('Product/Duration').T.reset_index()
-		df_t = df_t[df_t['Duration'] != 'Total']
+		df_t = df_out.set_index('Product/Duration').reset_index()
 		df_t['Total'] = pd.to_numeric(df_t['Total'].str.strip('%').replace('nan',0))
-		x_labels = df_t['Duration'].tolist()
+		x_labels = df_t['Product/Duration'].tolist()
 		
 		# Set the positions of the bars on the x-axis
 		x = range(len(x_labels))
@@ -77,7 +76,7 @@ if st.button("Submit"):
 		plt.bar(x, df_t['Total'], width=bar_width)
 	
 		# Label the axes and add a title
-		ax.set_xlabel('Duration')
+		ax.set_xlabel('Product')
 		ax.set_xticks([pos for pos in x])
 		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
