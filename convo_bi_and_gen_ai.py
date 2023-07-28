@@ -65,7 +65,7 @@ if st.button("Submit"):
 		title = 'Mortality experience by Product and Duration'
 
 		df_t = df_out.set_index('Product/Duration').T.reset_index()
-		st.dataframe(df_t)
+		df_t = df_t[df_t['Duration'] != 'Total']
 		df_t['Total'] = pd.to_numeric(df_t['Total'].str.strip('%').replace('nan',0))
 		x_labels = df_t['Duration'].tolist()
 		
