@@ -21,7 +21,7 @@ with st.sidebar:
 	st.write('Ask any question on your data')
 
 #Pivot the data and calculate the total actual and expected deaths for each product and duration 
-pivot_table = pd.pivot_table(df, values=['Actual Deaths', 'Expected Deaths'], index="Product", columns = 'Duration', aggfunc='sum', margins=True, margins_name="Total")
+pivot_table = pd.pivot_table(df, values=['Actual Deaths'/'Expected Deaths'], index="Product", columns = 'Duration', aggfunc='sum', margins=True, margins_name="Total")
 
 #Calculate the percentage of total actual deaths compared to total expected deaths 
 #pivot_table['Percentage'] = (pivot_table['Actual Deaths']/ pivot_table['Expected Deaths']* 100).round()#.astype(int)
