@@ -72,33 +72,35 @@ query = inp_query.lower()
 
 if st.button("Submit"):
 
-	if query == 'show mortality experience analysis by product and duration':
+	if query == 'show mortality experience analysis by Product and Duration':
 		df_out = pivot1(df,'Product', 'Duration')
-		title = 'show mortality experience analysis by product and duration'
-	elif query == 'show mortality experience analysis by product and smoker status':
+		title = 'Mortality experience by product and duration'
+	elif query == 'show mortality experience analysis by Product and Smoker Status':
 		df_out = pivot1(df,'Product', 'Smoker Status')
-		title = 'show mortality experience analysis by product and smoker status'
-	elif query == 'show mortality experience analysis by sum assured class and product':
+		title = 'Mortality experience by product and smoker status'
+	elif query == 'Mortality experience sum assured Class and Product':
 		df_out = pivot1(df,'Sum Assured Class', 'Product')
 		title = 'show mortality experience analysis by sum assured class and product'
 	elif query == 'show mortality experience analysis by issue year':
 		df_out = pivot2(df,'Issue Year')
-		title = 'show mortality experience analysis by issue year'
+		title = 'Mortality experience by Issue Year'
 	elif query == 'show mortality experience analysis by uw class':
 		df_out = pivot2(df,'UW Class')
-		title = 'show mortality experience analysis by uw class'
+		title = 'Mortality experience by UW Class'
 
+	st.write(title)
 	st.dataframe(df_out)
 	df_out.reset_index(level=0, inplace=True)
 
 	#Excel
 	workbook = Workbook()
-	report = workbook.active
+	sheet = workbook.active
+	sheet.title = 'Report'
 
-	c1 = report.cell(row = 1, column = 1)
+	c1 = sheet.cell(row = 1, column = 1)
 	c1.value = title
 	for row in dataframe_to_rows(df_out, index = False):
-		report.append(row)
+		sheet.append(row)
 
 	#formatting graph
 	sheet2 = workbook.create_sheet(title='Graph')
