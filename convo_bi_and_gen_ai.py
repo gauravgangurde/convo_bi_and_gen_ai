@@ -88,7 +88,7 @@ if st.button("Submit"):
 		df_out = pivot2(df,'UW Class')
 		title = 'Mortality experience by UW Class'
 
-	st.text(title)
+	#st.text(title)
 	st.dataframe(df_out)
 	df_out.reset_index(level=0, inplace=True)
 
