@@ -83,6 +83,10 @@ if st.button("Submit"):
 		df_out = pivot1('Product', 'Duration')
 		title = 'show mortality experience analysis by uw class'
 
+	st.dataframe(df_out)
+	df_out.reset_index(level=0, inplace=True)
+
+	
 	def df_to_pdf(df, output_file):
 		# Initialize PDF document
 		pdf = FPDF()
