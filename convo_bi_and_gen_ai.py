@@ -32,7 +32,7 @@ pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], ind
 title = "Percentage of Total Actual Deaths vs Total Expected Deaths for Different Products and Durations" 
 pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
 
-st.dataframe(pivot_table)
+st.dataframe(pivot_table_with_title)
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
