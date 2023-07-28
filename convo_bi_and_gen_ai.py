@@ -94,7 +94,7 @@ if st.button("Submit"):
 	#Excel
 	workbook = Workbook()
 	sheet = workbook.active
-	worksheet.add_image(ii('exl.png'), 'K3')
+	sheet.add_image(ii('exl.png'), 'K3')
 	c1 = sheet.cell(row = 1, column = 1)
 	c1.value = title
 	for row in dataframe_to_rows(df_out, index = False):
