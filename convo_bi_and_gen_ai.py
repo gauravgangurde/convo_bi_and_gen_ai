@@ -65,6 +65,7 @@ if st.button("Submit"):
 		title = 'Mortality experience by Product and Duration'
 
 		df_t = df_out.set_index('Product/Duration').T.reset_index()
+		st.dataframe(df_t)
 		df_t['Total'] = pd.to_numeric(df_t['Total'].str.strip('%').replace('nan',0))
 		x_labels = df_t['Duration'].tolist()
 		
@@ -72,7 +73,7 @@ if st.button("Submit"):
 		x = range(len(x_labels))
 		# Plot the bar graph for each value of Term and Endowment
 		fig, ax = plt.subplots()
-		bar_width = 0.35
+		bar_width = 0.5
 		plt.bar(x, df_t['Total'], width=bar_width)
 	
 		# Label the axes and add a title
