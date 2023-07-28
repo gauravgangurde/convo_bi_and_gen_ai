@@ -101,12 +101,13 @@ if st.button("Submit"):
 		sheet.append(row)
 
 	#formatting graph
+	sheet2 = workbook.create_sheet(title='Graph')
 	graph = ii('exl.png')
 	aspect_ratio = graph.width / graph.height
 	graph.width = 800
 	graph.height = graph.width/aspect_ratio
 	#adding graph to sheet
-	sheet.add_image(graph)
+	sheet2.add_image(graph)
 
 	workbook.save('output.xlsx')
 
