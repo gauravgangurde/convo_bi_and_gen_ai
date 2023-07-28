@@ -1,16 +1,16 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-#from PIL import Image
+from PIL import Image
 import matplotlib.pyplot as plt
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 from fpdf import FPDF
-from openpyxl.drawing.image import Image
+from openpyxl.drawing.image import Image as ii
 
 
 #EXL logo
-image = Image('exl.png')
+image = Image.open('exl.png')
 #read data file in dataframe
 #df = pd.read_csv('data.csv')
 df = pd.read_excel('Mort_V1.xlsx', header=2)
@@ -94,7 +94,7 @@ if st.button("Submit"):
 	#Excel
 	workbook = Workbook()
 	sheet = workbook.active
-	worksheet.add_image(Image('exl.png'), 'K3')
+	worksheet.add_image(ii('exl.png'), 'K3')
 	c1 = sheet.cell(row = 1, column = 1)
 	c1.value = title
 	for row in dataframe_to_rows(df_out, index = False):
