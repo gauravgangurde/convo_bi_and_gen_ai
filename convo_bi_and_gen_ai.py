@@ -107,7 +107,7 @@ if st.button("Submit"):
 		title = 'Mortality experience sum assured Class and Product'
 	elif query == 'show mortality experience analysis by issue year':
 		df_out = pivot2(df,'Issue Year')
-		df_out['Issue Year'] = df_out['Issue Year'].astype(str).str.replace(',', '').astype('int64')
+		df_out['Issue Year'] = df_out['Issue Year'].astype(str).str.replace(',', '')
 		st.text(df_out.dtypes)
 		title = 'Mortality experience by Issue Year'
 	elif query == 'show mortality experience analysis by uw class':
@@ -115,8 +115,7 @@ if st.button("Submit"):
 		title = 'Mortality experience by UW Class'
 
 	st.write(title)
-	pd.options.display.float_format = '{:,.0f}'.format #removing comma
-	st.dataframe(df_out)
+	st.dataframe(df_out,)
 
 	#Excel
 	workbook = Workbook()
