@@ -57,15 +57,13 @@ st.dataframe(df.head())
 
 inp_query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
 query = inp_query.lower()
-chart = 'n'
-#st.subheader(query)
 
 if st.button("Submit"):
 
 	if query == 'show mortality experience analysis by product and duration':
 		df_out = pivot1(df,'Product', 'Duration')
 		title = 'Mortality experience by Product and Duration'
-		chart = 'y'
+
 		df_t = df_out.set_index('Product/Duration').T.reset_index()
 		df_t['Endowment'] = pd.to_numeric(df_t['Endowment'].str.strip('%').replace('nan',0))
 		df_t['Term'] = pd.to_numeric(df_t['Term'].str.strip('%').replace('nan',0))
@@ -81,7 +79,7 @@ if st.button("Submit"):
 	
 		# Label the axes and add a title
 		ax.set_xlabel('Duration')
-		ax.set_ylabel('Mortality')
+		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
 		# Set the x-axis labels
 		ax.set_xticks([pos + bar_width / 2 for pos in x])
@@ -93,7 +91,7 @@ if st.button("Submit"):
 	elif query == 'show mortality experience analysis by product and smoker status':
 		df_out = pivot1(df,'Product', 'Smoker Status')
 		title = 'Mortality experience by Product and Smoker Status'
-		chart = 'y'
+
 		df_t = df_out.set_index('Product/Smoker Status').T.reset_index()
 		df_t['Endowment'] = pd.to_numeric(df_t['Endowment'].str.strip('%').replace('nan',0))
 		df_t['Term'] = pd.to_numeric(df_t['Term'].str.strip('%').replace('nan',0))
@@ -109,7 +107,7 @@ if st.button("Submit"):
 	
 		# Label the axes and add a title
 		ax.set_xlabel('Smoker Status')
-		ax.set_ylabel('Mortality')
+		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
 		# Set the x-axis labels
 		ax.set_xticks([pos + bar_width / 2 for pos in x])
@@ -121,7 +119,7 @@ if st.button("Submit"):
 	elif query == 'show mortality experience analysis by sum assured class and product':
 		df_out = pivot1(df,'Sum Assured Class', 'Product')
 		title = 'Mortality experience by sum assured Class and Product'
-		chart = 'y'
+
 		df_t = df_out.set_index('Sum Assured Class/Product').reset_index()
 		df_t['Endowment'] = pd.to_numeric(df_t['Endowment'].str.strip('%').replace('nan',0))
 		df_t['Term'] = pd.to_numeric(df_t['Term'].str.strip('%').replace('nan',0))
@@ -137,7 +135,7 @@ if st.button("Submit"):
 	
 		# Label the axes and add a title
 		ax.set_xlabel('Sum Assured Class')
-		ax.set_ylabel('Mortality')
+		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
 		# Set the x-axis labels
 		ax.set_xticks([pos + bar_width / 2 for pos in x])
@@ -150,19 +148,28 @@ if st.button("Submit"):
 		df_out = pivot2(df,'Issue Year')
 		df_out['Issue Year'] = df_out['Issue Year'].astype(str).str.replace(',', '')
 		title = 'Mortality experience by Issue Year'
-		chart = 'y'
+
 		fig, ax = plt.subplots()
 		x = pd.to_numeric(df_out['Issue Year'].str.strip('%').replace('nan',0))
 		y = pd.to_numeric(df_out['Mortality'].str.strip('%').replace('nan',0))
 		plt.plot(x, y, marker='o', linestyle='-')
 		ax.set_xlabel('Year')
-		ax.set_ylabel('Mortality')
+		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
 		fig.savefig('Graph1.png')
 		
 	elif query == 'show mortality experience analysis by uw class':
 		df_out = pivot2(df,'UW Class')
 		title = 'Mortality experience by UW Class'
+		
+		fig, ax = plt.subplots()
+		x = df_out['UW Class']
+		y = pd.to_numeric(df_out['Mortality'].str.strip('%').replace('nan',0))
+		plt.bar(x, y)
+		ax.set_xlabel('UW Class')
+		ax.set_ylabel('Mortality Experience')
+		ax.set_title(title)
+		fig.savefig('Graph1.png')
 
 	st.write(title)
 	st.dataframe(df_out,)
@@ -178,14 +185,13 @@ if st.button("Submit"):
 		sheet.append(row)
 
 	#formatting graph
-	if chart == 'y':
-		sheet2 = workbook.create_sheet(title='Graph')
-		graph = ii('Graph1.png')
-		aspect_ratio = graph.width / graph.height
-		graph.width = 600
-		graph.height = graph.width/aspect_ratio
-		#adding graph to sheet
-		sheet2.add_image(graph, 'B2')
+	sheet2 = workbook.create_sheet(title='Graph')
+	graph = ii('Graph1.png')
+	aspect_ratio = graph.width / graph.height
+	graph.width = 600
+	graph.height = graph.width/aspect_ratio
+	#adding graph to sheet
+	sheet2.add_image(graph, 'B2')
 
 	workbook.save('output.xlsx')
 
