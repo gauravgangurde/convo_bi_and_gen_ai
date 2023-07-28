@@ -72,12 +72,12 @@ query = inp_query.lower()
 
 if st.button("Submit"):
 
-	if query == 'show mortality experience analysis by Product and Duration':
+	if query == 'show mortality experience analysis by product and duration':
 		df_out = pivot1(df,'Product', 'Duration')
-		title = 'Mortality experience by product and duration'
-	elif query == 'show mortality experience analysis by Product and Smoker Status':
+		title = 'Mortality experience by Product and Duration'
+	elif query == 'show mortality experience analysis by product and smoker status':
 		df_out = pivot1(df,'Product', 'Smoker Status')
-		title = 'Mortality experience by product and smoker status'
+		title = 'Mortality experience by Product and Smoker Status'
 	elif query == 'show mortality experience analysis by sum assured class and product':
 		df_out = pivot1(df,'Sum Assured Class', 'Product')
 		title = 'Mortality experience sum assured Class and Product'
