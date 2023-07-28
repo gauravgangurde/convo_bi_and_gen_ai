@@ -36,6 +36,7 @@ def pivot1(ind, col):
 	return pivot_table['Percentage']
 #st.dataframe(pivot_table['Percentage'])
 st.dataframe(pivot1('Product', 'Duration'))
+st.dataframe(pivot1('Product', 'Smoker Status'))
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
