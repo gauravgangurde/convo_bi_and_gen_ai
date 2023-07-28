@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 from fpdf import FPDF
+from openpyxl.drawing.image import Image
+
 
 #EXL logo
 image = Image.open('exl.png')
@@ -19,7 +21,7 @@ with st.sidebar:
 	st.write('Ask any question on your data')
 
 
-def pivot1(ind, col):
+def pivot1(df,ind, col):
 	#Pivot the data and calculate the total actual and expected deaths for each product and duration 
 	pivot_table = pd.pivot_table(df, values=['Actual Deaths','Expected Deaths'], index=ind, columns = col, aggfunc='sum', margins=True, margins_name="Total")
 	
@@ -38,6 +40,9 @@ def pivot1(ind, col):
 #st.dataframe(pivot1('Product', 'Duration'))
 #st.dataframe(pivot1('Product', 'Smoker Status'))
 #st.dataframe(pivot1('Product', 'Sum Assured Class'))
+
+def pivot2(df,col):
+	
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
@@ -68,64 +73,28 @@ query = inp_query.lower()
 if st.button("Submit"):
 
 	if query == 'show mortality experience analysis by product and duration':
-		df_out = pivot1('Product', 'Duration')
+		df_out = pivot1(df,'Product', 'Duration')
 		title = 'show mortality experience analysis by product and duration'
 	elif query == 'show mortality experience analysis by product and smoker status':
-		df_out = pivot1('Product', 'Smoker Status')
+		df_out = pivot1(df,'Product', 'Smoker Status')
 		title = 'show mortality experience analysis by product and smoker status'
 	elif query == 'show mortality experience analysis by sum assured class and product':
-		df_out = pivot1('Sum Assured Class', 'Product')
+		df_out = pivot1(df,'Sum Assured Class', 'Product')
 		title = 'show mortality experience analysis by sum assured class and product'
 	elif query == 'show mortality experience analysis by issue year':
-		df_out = pivot1('Product', 'Duration')
+		df_out = pivot2(df,'Issue Year')
 		title = 'show mortality experience analysis by issue year'
 	elif query == 'show mortality experience analysis by uw class':
-		df_out = pivot1('Product', 'Duration')
+		df_out = pivot2(df,'UW Class')
 		title = 'show mortality experience analysis by uw class'
 
 	st.dataframe(df_out)
 	df_out.reset_index(level=0, inplace=True)
 
-	#PDF
-	def df_to_pdf(df, output_file):
-		# Initialize PDF document
-		pdf = FPDF()
-		pdf.add_page()
-		
-		# Set font and font size
-		pdf.set_font("Arial", size=12)
-		
-		# Add table header
-		for column in df.columns:
-			pdf.cell(20, 10, str(column), 1)
-		pdf.ln()
-		
-		# Add table data
-		for index, row in df.iterrows():
-			for value in row:
-				pdf.cell(20, 10, str(value), 1)
-			pdf.ln()
-		
-		# Save PDF to the specified output file
-		pdf.output(output_file)
-	
-	
-	# Usage example
-	output_pdf_file = 'output_dataframe.pdf'
-	df_to_pdf(df_out, output_pdf_file)
-	
-	
-	with open("output_dataframe.pdf", "rb") as file:
-		st.download_button(
-			label="Download Report",
-			data=file,
-			file_name='report.pdf'
-		)
-	
-
 	#Excel
 	workbook = Workbook()
 	sheet = workbook.active
+	worksheet.add_image(image, 'K3')
 	c1 = sheet.cell(row = 1, column = 1)
 	c1.value = title
 	for row in dataframe_to_rows(df_out, index = False):
