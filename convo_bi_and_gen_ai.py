@@ -35,9 +35,9 @@ def pivot1(ind, col):
 	#pivot_table_with_title = pd.concat([pd.DataFrame([title], columns=['']), pivot_table], axis=0)
 	return pivot_table['Percentage']
 #st.dataframe(pivot_table['Percentage'])
-st.dataframe(pivot1('Product', 'Duration'))
-st.dataframe(pivot1('Product', 'Smoker Status'))
-st.dataframe(pivot1('Product', 'Sum Assured Class'))
+#st.dataframe(pivot1('Product', 'Duration'))
+#st.dataframe(pivot1('Product', 'Smoker Status'))
+#st.dataframe(pivot1('Product', 'Sum Assured Class'))
 
 def query_mapper(query):
 	if query == 'show mortality experience analysis by product and duration':
@@ -62,55 +62,74 @@ st.dataframe(df.head())
 #with st.form("conversation_bi"):
 
 inp_query = st.text_input(label ="Enter a question" , placeholder = 'Enter your query')
-query = query_mapper(inp_query.lower())
+query = inp_query.lower()
 #st.subheader(query)
 
-def df_to_pdf(df, output_file):
-	# Initialize PDF document
-	pdf = FPDF()
-	pdf.add_page()
-	
-	# Set font and font size
-	pdf.set_font("Arial", size=12)
-	
-	# Add table header
-	for column in df.columns:
-		pdf.cell(200, 10, str(column), 1)
-	pdf.ln()
-	
-	# Add table data
-	for index, row in df.iterrows():
-		for value in row:
-			pdf.cell(200, 10, str(value), 1)
+if st.button("Submit"):
+
+	if query == 'show mortality experience analysis by product and duration':
+		df_out = pivot1('Product', 'Duration')
+		title = 'show mortality experience analysis by product and duration'
+	elif query == 'show mortality experience analysis by product and smoker status':
+		df_out = pivot1('Product', 'Smoker Status')
+		title = 'show mortality experience analysis by product and smoker status'
+	elif query == 'show mortality experience analysis by sum assured class and product':
+		df_out = pivot1('Product', 'Product', 'Sum Assured Class')
+		title = 'show mortality experience analysis by sum assured class and product'
+	elif query == 'show mortality experience analysis by issue year':
+		df_out = pivot1('Product', 'Duration')
+		title = 'show mortality experience analysis by issue year'
+	elif query == 'show mortality experience analysis by uw class':
+		df_out = pivot1('Product', 'Duration')
+		title = = 'show mortality experience analysis by uw class'
+
+	def df_to_pdf(df, output_file):
+		# Initialize PDF document
+		pdf = FPDF()
+		pdf.add_page()
+		
+		# Set font and font size
+		pdf.set_font("Arial", size=12)
+		
+		# Add table header
+		for column in df.columns:
+			pdf.cell(200, 10, str(column), 1)
 		pdf.ln()
+		
+		# Add table data
+		for index, row in df.iterrows():
+			for value in row:
+				pdf.cell(200, 10, str(value), 1)
+			pdf.ln()
+		
+		# Save PDF to the specified output file
+		pdf.output(output_file)
 	
-	# Save PDF to the specified output file
-	pdf.output(output_file)
-
-
-# Usage example
-output_pdf_file = 'output_dataframe.pdf'
-df_to_pdf(pivot_table['Percentage'], output_pdf_file)
-
-
-with open("output_dataframe.pdf", "rb") as file:
-	st.download_button(
-		label="Download data",
-		data=file,
-		file_name='report.pdf'
-	)
-
-
-workbook = Workbook()
-sheet = workbook.active
-for row in dataframe_to_rows(pivot_table['Percentage']):
-	sheet.append(row)
-workbook.save('output.xlsx')
-with open("output.xlsx", "rb") as file:
-	st.download_button(
-		label="Download Excel",
-		data=file,
-		file_name='data.xlsx'
-	)
+	
+	# Usage example
+	output_pdf_file = 'output_dataframe.pdf'
+	df_to_pdf(df_out, output_pdf_file)
+	
+	
+	with open("output_dataframe.pdf", "rb") as file:
+		st.download_button(
+			label="Download Report",
+			data=file,
+			file_name='report.pdf'
+		)
+	
+	
+	workbook = Workbook()
+	sheet = workbook.active
+	sheet.append(title)
+	for row in dataframe_to_rows(df_out):
+		sheet.append(row)
+	workbook.save('output.xlsx')
+	with open("output.xlsx", "rb") as file:
+		st.download_button(
+			label="Download Excel",
+			data=file,
+			file_name='data.xlsx'
+		)
 
 		
