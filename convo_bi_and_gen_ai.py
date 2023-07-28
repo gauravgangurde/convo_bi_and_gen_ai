@@ -41,7 +41,7 @@ def pivot1(df,ind, col):
 #st.dataframe(pivot1('Product', 'Smoker Status'))
 #st.dataframe(pivot1('Product', 'Sum Assured Class'))
 
-def pivot2(df,col):
+#def pivot2(df,col):
 	
 
 def query_mapper(query):
