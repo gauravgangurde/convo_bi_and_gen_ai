@@ -77,7 +77,8 @@ if st.button("Submit"):
 		plt.bar(x, df_t['Total'], width=bar_width)
 	
 		# Label the axes and add a title
-		ax.set_xlabel('Duration')
+		ax.set_xlabel('Duration
+  		ax.set_xticklabels(x_labels)
 		ax.set_ylabel('Mortality Experience')
 		ax.set_title(title)
 		fig.savefig('Graph1.png')
