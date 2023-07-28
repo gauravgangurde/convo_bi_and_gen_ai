@@ -157,7 +157,7 @@ if st.button("Submit"):
 		# Plot the bar graph for each value of Term and Endowment
 		fig2, ax2 = plt.subplots()
 		bar_width = 0.5
-		plt.bar(x, df_t['Total'], width=bar_width)
+		plt.bar(x, df_t2['Total'], width=bar_width)
 		# Label the axes and add a title
 		ax2.set_xlabel('Product')
 		ax2.set_xticks([pos for pos in x])
