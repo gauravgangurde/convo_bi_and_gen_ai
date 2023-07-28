@@ -115,6 +115,7 @@ if st.button("Submit"):
 		title = 'Mortality experience by UW Class'
 
 	st.write(title)
+	pd.options.display.float_format = '{:,.0f}'.format #removing comma
 	st.dataframe(df_out)
 
 	#Excel
