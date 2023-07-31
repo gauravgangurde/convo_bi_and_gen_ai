@@ -55,7 +55,7 @@ def addlabels(x,y):
 st.subheader("Conversational BI")
 st.write("Sample data structure ")
 st.dataframe(df.head())
-st.markdown(df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
+#st.markdown(df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
 
 #with st.form("conversation_bi"):
 
@@ -205,7 +205,8 @@ if st.button("Submit"):
 		fig.savefig('Graph1.png')
 
 	st.write(title)
-	st.dataframe(df_out, hide_index = True)
+	#st.dataframe(df_out)
+	st.markdown(df_out.style.hide(axis="index").to_html(), unsafe_allow_html=True)
 
 	col1, col2 = st.columns(2)
 	with col1:
