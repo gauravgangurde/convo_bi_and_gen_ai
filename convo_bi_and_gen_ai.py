@@ -205,8 +205,8 @@ if st.button("Submit"):
 		fig.savefig('Graph1.png')
 
 	st.write(title)
-	#st.dataframe(df_out)
-	st.markdown(df_out.style.hide(axis="index").to_html(), unsafe_allow_html=True)
+	st.dataframe(df_out)
+	#st.markdown(df_out.style.hide(axis="index").to_html(), unsafe_allow_html=True)
 
 	col1, col2 = st.columns(2)
 	with col1:
