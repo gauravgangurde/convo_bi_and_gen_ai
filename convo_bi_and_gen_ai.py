@@ -54,7 +54,8 @@ def addlabels(x,y):
 
 st.subheader("Conversational BI")
 st.write("Sample data structure ")
-st.dataframe(df.head(), hide_index = True)
+st.dataframe(df.head())
+st.markdown(df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
 
 #with st.form("conversation_bi"):
 
